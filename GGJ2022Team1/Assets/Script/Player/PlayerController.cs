@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     float movementX;
     float movementY;
 
+    //sprite del player
+    [SerializeField]
+    SpriteRenderer playerSprite;
+    [SerializeField]
+    Sprite front, back, sideR, sideL;
+    int direction;
     void Start()
     {
 
@@ -28,20 +34,57 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked) //W
             {
+                direction = 1;
                 StartCoroutine(MovePlayer(Vector3.up));
+            }else if(Input.GetAxis("Vertical") > 0 && !isMoving)
+            {
+                direction = 1;
             }
             if (Input.GetAxis("Vertical") < 0 && !isMoving && !PlayerCollision.DownBlocked) //S
             {
+                direction = 2;
                 StartCoroutine(MovePlayer(Vector3.down));
+            }
+            else if (Input.GetAxis("Vertical") < 0 && !isMoving)
+            {
+                direction = 2;
             }
             if (Input.GetAxis("Horizontal") > 0 && !isMoving && !PlayerCollision.RightBlocked) //D
             {
+                direction = 3;
                 StartCoroutine(MovePlayer(Vector3.right));
+            }
+            else if (Input.GetAxis("Horizontal") > 0 && !isMoving)
+            {
+                direction = 3;
             }
             if (Input.GetAxis("Horizontal") < 0 && !isMoving && !PlayerCollision.LeftBlocked) //A
             {
+                direction = 4;
                 StartCoroutine(MovePlayer(Vector3.left));
             }
+            else if (Input.GetAxis("Horizontal") < 0 && !isMoving)
+            {
+                direction = 4;
+            }
+        }
+
+        if(direction == 1)
+        {
+            playerSprite.sprite = back;
+        }else if(direction == 2)
+        {
+            playerSprite.sprite = front;
+        }else if(direction == 3)
+        {
+            playerSprite.sprite = sideR;
+        }else if(direction == 4)
+        {
+            playerSprite.sprite = sideL;
+        }
+        else
+        {
+            playerSprite.sprite = front;
         }
     }
     private IEnumerator MovePlayer(Vector3 direction)
