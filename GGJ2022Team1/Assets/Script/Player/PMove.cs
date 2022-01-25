@@ -19,11 +19,25 @@ public class PMove : MonoBehaviour
     [SerializeField]
     public float velMovimento = 5f;
 
+    [SerializeField]
+    SpriteRenderer playerSprite;
+    [SerializeField]
+    Sprite Left, Right, Up, Down;
     //componenti
     Rigidbody2D rb2D;
 
     //variabili locali
     public Vector2 DirMovimento;
+
+        //variabili utili per la morte del player
+    public static bool isDead;
+
+    //variabili per il movimento
+    public bool isMoving;
+    private Vector3 originPos, targetPos;
+    private float timeToMove = 0.2f;
+    float movementX;
+    float movementY;
 
     //------------------------------------------------------------------------------------------
     //---------------METODI---------------------------------------------------------------------
@@ -35,10 +49,28 @@ public class PMove : MonoBehaviour
 
     void Update()
     {
-        //Asseggno a movement l'input nell'asse X e Y
+        //Assegno a movement l'input nell'asse X e Y
         DirMovimento.x = Input.GetAxisRaw("Horizontal");
         DirMovimento.y = Input.GetAxisRaw("Vertical");
 
+        //if (Input.GetAxisRaw("Horizontal") > 0)
+        //{
+        //    playerSprite.sprite = Right;
+        //}
+        //if (Input.GetAxisRaw("Horizontal") < 0)
+        //{
+        //    playerSprite.sprite = Left;
+        //}
+        //if (Input.GetAxisRaw("Vertical") > 0)
+        //{
+        //    playerSprite.sprite = Up;
+        //}
+        //if (Input.GetAxisRaw("Vertical") < 0)
+        //{
+        //    playerSprite.sprite = Down;
+        //}
+
+        //rob
         if (DirMovimento.y == 0 && DirMovimento.x == 0)
         {
             // Reimposta il valore se non è stato rilevato alcun input 
@@ -71,7 +103,7 @@ public class PMove : MonoBehaviour
         }
     }
 
-
+    //rob
     private void FixedUpdate()
     {
         rb2D.MovePosition(rb2D.position + DirMovimento * velMovimento * Time.fixedDeltaTime);

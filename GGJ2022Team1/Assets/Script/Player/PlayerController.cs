@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     //variabili per il movimento
     public bool isMoving;
     private Vector3 originPos, targetPos;
-    private float timeToMove = 0.2f;
+    private float timeToMove = 0.35f;
     float movementX;
     float movementY;
 
@@ -25,46 +26,22 @@ public class PlayerController : MonoBehaviour
         //controllo per togliere i comandi al player quando è morto e quando è in pausa
         if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping)
         {
-            //if (Input.GetKey(KeyCode.W) && !isMoving)
-            //{
-            //    StartCoroutine(MovePlayer(Vector3.up));
-            //}
-            //if (Input.GetKey(KeyCode.A) && !isMoving)
-            //{
-            //    StartCoroutine(MovePlayer(Vector3.left));
-            //}
-            //if (Input.GetKey(KeyCode.S) && !isMoving)
-            //{
-            //    StartCoroutine(MovePlayer(Vector3.down));
-            //}
-            //if (Input.GetKey(KeyCode.D) && !isMoving)
-            //{
-            //    StartCoroutine(MovePlayer(Vector3.right));
-            //}
-
-            if (Input.GetAxis("Vertical") > 0 && !isMoving) //W
+            if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked) //W
             {
                 StartCoroutine(MovePlayer(Vector3.up));
             }
-            if (Input.GetAxis("Vertical") < 0 && !isMoving) //S
+            if (Input.GetAxis("Vertical") < 0 && !isMoving && !PlayerCollision.DownBlocked) //S
             {
                 StartCoroutine(MovePlayer(Vector3.down));
             }
-            if (Input.GetAxis("Horizontal") > 0 && !isMoving) //D
+            if (Input.GetAxis("Horizontal") > 0 && !isMoving && !PlayerCollision.RightBlocked) //D
             {
                 StartCoroutine(MovePlayer(Vector3.right));
             }
-            if (Input.GetAxis("Horizontal") < 0 && !isMoving) //A
+            if (Input.GetAxis("Horizontal") < 0 && !isMoving && !PlayerCollision.LeftBlocked) //A
             {
                 StartCoroutine(MovePlayer(Vector3.left));
             }
-
-            //DA TENERE IN CONSIDERAZIONE
-            //questo if serve a far ruotare il giocatore verso la direzione in cui sta camminando
-            //if (!Mathf.Approximately(0, movementX))
-            //{
-            //    transform.rotation = movementX > 0 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, -180, 0);
-            //}
         }
     }
     private IEnumerator MovePlayer(Vector3 direction)

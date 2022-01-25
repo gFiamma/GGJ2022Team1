@@ -16,6 +16,12 @@ public class NPC : MonoBehaviour
     public GameObject interactHUD;                                      //prendo in refernce l'HUD
     bool doOnce = false;
 
+    [SerializeField]
+    bool wantAResponse;
+
+    [SerializeField]
+    NPC1 continuoDialogo = null;
+
     private void Update()
     {
 
@@ -29,6 +35,7 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && DialogueManager.isTyping == false)         //e quel qualcosa è il player e l'NPC non sta parlando
         {
+            continuoDialogo.enabled = true;
             doOnce = false;
             canInteract = true;                                         //canInteract viene settata a true
             if (!doOnce)
@@ -50,6 +57,7 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)                          //se qualcosa esce dal trigger
     {
+        continuoDialogo.enabled = false;
         if (other.gameObject.CompareTag("Player"))                      //e quel qualcos è il player
         {
             canInteract = false;
@@ -72,6 +80,14 @@ public class NPC : MonoBehaviour
         {
             doOnce = true;
             interactHUD.SetActive(false);                                           //disabilito l'hud
+            if (wantAResponse)
+            {
+                DialogueManager.isChoosing = true;
+            }
+            else
+            {
+                DialogueManager.isChoosing = false;
+            }
             StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue));        //faccio partire una coroutine che mostra il dialogo
         }
 

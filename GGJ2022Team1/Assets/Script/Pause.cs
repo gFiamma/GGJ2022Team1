@@ -11,7 +11,6 @@ public class Pause : MonoBehaviour
 	public GameObject FirstButton, OptionsFirstButton, OptionsClosedButton;             //prendo in reference dei bottoni presenti nella pausa
 	public GameObject HUDcanvas;                                                        //prendo in reference l'intero pannello che contiene L'HUD
 	public GameObject DialogueBox;                                                        //prendo in reference il Box di Dialogo
-	bool mouseUsed = default;															//una variabile che serve per capire se si passa dal controller ai comandi per pc
 
 	void Start()
 	{
@@ -25,23 +24,8 @@ public class Pause : MonoBehaviour
 
 		if (GameIsPaused)                                                   //se il gioco va in pausa
 		{
-			if (ControllerCheck.controllerPlugged == true)					//se il controller è collegato
-			{
-				if (horizontal != 0 && mouseUsed == true || vertical != 0 && mouseUsed == true)			//se il valore delle assi è diverso da 0 ed il mouse è stato utilizzato
-				{
-					mouseUsed = false;											//setto la variabile a false, dato che ha fatto il suo dovere
-					EventSystem.current.SetSelectedGameObject(FirstButton);		//faccio selezionare all'event system il FirstButton
-				}
-				Cursor.lockState = CursorLockMode.Locked;					//blocco il mouse e lo rendo invisibile
-				Cursor.visible = false;
-			}
-			else															//sennò
-			{
-				mouseUsed = true;											//il mouse è in uso
-				EventSystem.current.SetSelectedGameObject(null);			//nessun gameObject è selezionato dall'event system
-				Cursor.lockState = CursorLockMode.None;						//il mouse è visibile e libero
-				Cursor.visible = true;
-			}
+			Cursor.lockState = CursorLockMode.Locked;					//blocco il mouse e lo rendo invisibile
+			Cursor.visible = false;
 		}
 
 		if (Input.GetButtonDown("Cancel") && !PlayerController.isDead && Inventory.vite > 0)		//se viene premuto il tasto per la pausa e lo Shop non è attivo
@@ -84,8 +68,6 @@ public class Pause : MonoBehaviour
 		Time.timeScale = 1f;                                                //il tempo torna alla normalità
 		StartCoroutine(waitJump());                                         //dato che dava problemi che saltava appena finiva il dialogo, ho deciso di fare così per evitare problemi
 		//cambio musiche
-		//Cursor.lockState = CursorLockMode.Locked;                           //il cursore diventa invisibile e bloccato al centro
-		//Cursor.visible = false;
 	}
 
 	public void LoadMenu()

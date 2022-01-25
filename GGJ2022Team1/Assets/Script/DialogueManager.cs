@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {                                                                       //script del dialogo basato su questo https://www.youtube.com/watch?v=2CmG7ZtrWso adattato e modificato secondo le mie esigenze
@@ -32,6 +33,18 @@ public class DialogueManager : MonoBehaviour
 
     bool backPressed;
 
+    [SerializeField]
+    private GameObject ResponseBox, yesButton, noButton;
+    public static bool isChoosing;
+    public static int chooseResult = 0;
+
+    [SerializeField]
+    private GameObject InfoBox;
+    [SerializeField]
+    Text nameNPC;
+    [SerializeField]
+    Image imageNPC;
+
     private void Awake()                                                //prima ancora dello start
     {
         Instance = this;                                                //setto l'istanza a questo script
@@ -45,7 +58,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-
         if (suonoDialog.isPlaying && Pause.GameIsPaused)                //se stai riproducendo il suono dell'NPC che parla ed il gioco viene messo in pausa
         {
             hoMessoPausa = true;                                        //la variabile che controlla in questo script se il gioco è stato messo in pausa viene settata a true
@@ -61,11 +73,24 @@ public class DialogueManager : MonoBehaviour
             }
             else                                                                                        //sennò
             {
-                suonoDialog.Stop();                                                                     //il suono di quando parla l'NPC si ferma
-                currentLine = 0;                                                                        //resetto l'indice del dialogo
-                dialogueBox.SetActive(false);                                                           //disabilito il pannello dove si mostra il dialogo
-                HUD.SetActive(true);                                                                    //riattivo l'HUD
-                StartCoroutine(waitJump());                                                             //dato che dava problemi che saltava appena finiva il dialogo, ho deciso di fare così per evitare problemi
+                if (isChoosing)
+                {
+                    nextLine = false;
+                    suonoDialog.Stop();                                                                     //il suono di quando parla l'NPC si ferma
+                    currentLine = 0;                                                                        //resetto l'indice del dialogo
+                    ResponseBox.SetActive(true);                                                        //mostro il box per dare la risposta
+                    EventSystem.current.SetSelectedGameObject(yesButton);
+
+
+                }
+                else
+                {
+                    nextLine = false;
+                    suonoDialog.Stop();                                                                     //il suono di quando parla l'NPC si ferma
+                    currentLine = 0;                                                                        //resetto l'indice del dialogo
+                    StopDialogue();                                                                         //fermo il dialogo
+                }
+                //a fine dialogo, se c'è da fare una scelta, in questo punto devo inserire la scelta da fare con annesso collegamento ai bottone ed all'event system.
             }
         }
 
@@ -86,6 +111,9 @@ public class DialogueManager : MonoBehaviour
 
         this.dial = dial;                                               //il dialogo di questo script è uguale a dialogo passato
         dialogueBox.SetActive(true);                                    //attivo il dialogueBox
+        InfoBox.SetActive(true);
+        nameNPC.text = dial.name;
+        imageNPC.sprite = dial.face;
         StartCoroutine(TypeDialogue(dial.Lines[0]));                    //faccio partire una coroutine che fa visualizzare il dialogo poco a poco con effetto macchina da scrivere, partendo dall'indice 0 dell'array con le varie strings
     }
 
@@ -179,5 +207,32 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds (0.1f);
         isTyping = false;                                                   //ridà al player il potere di muoversi
+    }
+
+    public void sayYes()
+    {
+        chooseResult = 1;
+        isChoosing = false;
+        ResponseBox.SetActive(false);
+        Debug.Log("ho detto si");
+    }
+
+    public void sayNo()
+    {
+        chooseResult = 2;
+        isChoosing = false;
+        ResponseBox.SetActive(false);
+        Debug.Log("ho detto no");
+
+    }
+
+    public void StopDialogue()
+    {
+        dialogueBox.SetActive(false);                                                           //disabilito il pannello dove si mostra il dialogo
+        HUD.SetActive(true);                                                                    //riattivo l'HUD
+        StartCoroutine(waitJump());                                                             //dato che dava problemi che saltava appena finiva il dialogo, ho deciso di fare così per evitare problemi
+        ResponseBox.SetActive(false);
+        InfoBox.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
