@@ -434,11 +434,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325457696}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: 129f601e12334e94c9a6dbc476282d56, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 83d8195c1f4af114b8d881fd2139a0fa, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -724,10 +724,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88137b5ecdd594e46950a7f0ca563ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempo: 10
+  tempo: 16
   primoTasto: {fileID: 197395309}
-  nomeScena: SampleScene
-  nomeScena2: SampleScene
+  nomeScena: StartScene
+  nomeScena2: StartScene
 --- !u!114 &2022330434
 MonoBehaviour:
   m_ObjectHideFlags: 0

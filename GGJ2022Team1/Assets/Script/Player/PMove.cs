@@ -29,16 +29,6 @@ public class PMove : MonoBehaviour
     //variabili locali
     public Vector2 DirMovimento;
 
-        //variabili utili per la morte del player
-    public static bool isDead;
-
-    //variabili per il movimento
-    public bool isMoving;
-    private Vector3 originPos, targetPos;
-    private float timeToMove = 0.2f;
-    float movementX;
-    float movementY;
-
     //------------------------------------------------------------------------------------------
     //---------------METODI---------------------------------------------------------------------
 
