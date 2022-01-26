@@ -15,10 +15,5 @@ public class PlayerCollision : MonoBehaviour
         LeftBlocked = Physics2D.OverlapCircle(left.transform.position, distance, ObstacleMask);
         UpBlocked = Physics2D.OverlapCircle(up.transform.position, distance, ObstacleMask);
         DownBlocked = Physics2D.OverlapCircle(down.transform.position, distance, ObstacleMask);
-
-        Debug.Log(PlayerCollision.UpBlocked);
-        Debug.Log(PlayerCollision.DownBlocked);
-        Debug.Log(PlayerCollision.LeftBlocked);
-        Debug.Log(PlayerCollision.RightBlocked);
     }
 }

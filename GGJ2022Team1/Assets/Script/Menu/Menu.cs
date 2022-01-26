@@ -12,7 +12,8 @@ public class Menu : MonoBehaviour
 	public GameObject FirstButton, OptionsFirstButton, OptionsClosedButton;             //prendo in reference dei bottoni presenti nella pausa
 	public GameObject video;
 	public float tempo;
-
+	public GameObject sfondoAnim;
+	public Animator animSfondo;
 	void Start()
 	{
 		StartCoroutine(Inizio());
@@ -52,10 +53,14 @@ public class Menu : MonoBehaviour
 		video.SetActive(true);
 		yield return new WaitForSeconds(tempo);                                 //attendo il tempo indicato dallo sviluppatore nell'inspector
 		video.SetActive(false);
-		stopVideo();                //https://pixabay.com/it/videos/intro-digitale-dj-51803/ video intro
+		StartCoroutine(stopVideo());                //https://pixabay.com/it/videos/intro-digitale-dj-51803/ video intro
 	}
-	void stopVideo()
+	IEnumerator stopVideo()
     {
+		sfondoAnim.SetActive(true);
+		animSfondo.SetTrigger("active");
+		yield return new WaitForSeconds(1f);
+		sfondoAnim.SetActive(false);
 		EventSystem.current.SetSelectedGameObject(null);                    //nell'event system nulla è selezionato
 		EventSystem.current.SetSelectedGameObject(FirstButton);             //il primo bottone è selezionato dall'event system
 		MenuUI.SetActive(true);												//pannello menu attivo

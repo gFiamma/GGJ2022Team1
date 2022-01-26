@@ -15,5 +15,9 @@ public class Inventory : MonoBehaviour
         PlayerController.isDead = false;
         DialogueManager.isTyping = false;
         Pause.GameIsPaused = false;
+        DialogueManager.Yes = 0;
+        DialogueManager.No = 0;
+        DialogueManager.chooseResult = 0;
+        DialogueManager.isChoosing = false;
     }
 }

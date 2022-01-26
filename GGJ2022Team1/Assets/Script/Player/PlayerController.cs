@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public static bool isDead;
 
     //variabili per il movimento
-    public bool isMoving;
+    public static bool isMoving;
     private Vector3 originPos, targetPos;
     private float timeToMove = 0.35f;
     float movementX;

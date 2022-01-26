@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: pareteangolo2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 832330c2d0ee1f3499db10331afe3941, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 689a473d48414f7419f67c64f84b0d0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

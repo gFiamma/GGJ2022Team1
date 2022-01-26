@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &197395310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -185,7 +185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 197395311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2022330433}
+        m_TargetAssemblyTypeName: CutSceneCoroutine, Assembly-CSharp
+        m_MethodName: SaltaCutscene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &197395311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +446,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325457696}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 129f601e12334e94c9a6dbc476282d56, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b5f85796285931645a603a182f4396d9, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -657,8 +669,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_SubmitButton: Jump
+  m_CancelButton: Back
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -724,8 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88137b5ecdd594e46950a7f0ca563ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempo: 16
-  primoTasto: {fileID: 197395309}
+  tempo: 5
   nomeScena: StartScene
   nomeScena2: StartScene
 --- !u!114 &2022330434
