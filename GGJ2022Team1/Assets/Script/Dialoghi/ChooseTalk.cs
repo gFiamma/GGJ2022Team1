@@ -49,6 +49,14 @@ public class ChooseTalk : MonoBehaviour             //video di sfondo: https://w
     IEnumerator changeScene()
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Day1");
+        if (DialogueManager.Yes > DialogueManager.No)
+        {
+            SceneManager.LoadScene("Day1");
+        }
+        else
+        {
+            SceneManager.LoadScene("Day1Real");
+        }
+
     }
 }

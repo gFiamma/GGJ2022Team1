@@ -45,6 +45,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     Image imageNPC;
 
+    //variabili per gestire se andare in mondo fantastico o no
+    public static int Yes = 0;
+    public static int No = 0;
+
     private void Awake()                                                //prima ancora dello start
     {
         Instance = this;                                                //setto l'istanza a questo script
@@ -212,6 +216,7 @@ public class DialogueManager : MonoBehaviour
     public void sayYes()
     {
         chooseResult = 1;
+        Yes++;
         isChoosing = false;
         ResponseBox.SetActive(false);
         Debug.Log("ho detto si");
@@ -220,6 +225,7 @@ public class DialogueManager : MonoBehaviour
     public void sayNo()
     {
         chooseResult = 2;
+        No++;
         isChoosing = false;
         ResponseBox.SetActive(false);
         Debug.Log("ho detto no");
