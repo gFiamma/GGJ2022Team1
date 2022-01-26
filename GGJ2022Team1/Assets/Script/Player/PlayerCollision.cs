@@ -16,4 +16,18 @@ public class PlayerCollision : MonoBehaviour
         UpBlocked = Physics2D.OverlapCircle(up.transform.position, distance, ObstacleMask);
         DownBlocked = Physics2D.OverlapCircle(down.transform.position, distance, ObstacleMask);
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("death"))
+        {
+            Debug.Log("Player Morto");
+            Death();
+        }
+    }
+
+    void Death()
+    {
+
+    }
 }

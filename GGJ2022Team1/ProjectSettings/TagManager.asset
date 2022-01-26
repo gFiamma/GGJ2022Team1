@@ -8,6 +8,8 @@ TagManager:
   - Left
   - Up
   - Down
+  - death
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
