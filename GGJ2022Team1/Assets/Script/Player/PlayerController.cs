@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
     //variabili per l'attacco
-    public BoxCollider2D leftBox, rightBox, UpBox, DownBox;
+    public GameObject leftBox, rightBox, UpBox, DownBox;
     bool isAttacking;
     void Start()
     {
@@ -39,10 +39,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IdleUp", false);
         anim.SetBool("IdleRight", false);
         isAttacking = false;
-        leftBox.enabled = false;
-        rightBox.enabled = false;
-        UpBox.enabled = false;
-        DownBox.enabled = false;
+        leftBox.GetComponent<BoxCollider2D>().enabled = false;
+        rightBox.GetComponent<BoxCollider2D>().enabled = false;
+        UpBox.GetComponent<BoxCollider2D>().enabled = false;
+        DownBox.GetComponent<BoxCollider2D>().enabled = false;
     } 
 
     void Update()
@@ -163,31 +163,31 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveRight", false);
             }
 
-            if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking)
+            if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking && !Teleport.isRealWorld)
             {
                 isAttacking = true;
-                UpBox.enabled = true;
+                UpBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkUp", true);
                 StartCoroutine(atkWait());
             }
-            else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
+            else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking && !Teleport.isRealWorld)
             {
                 isAttacking = true;
-                DownBox.enabled = true;
+                DownBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkDown", true);
                 StartCoroutine(atkWait());
             }
-            else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
+            else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking && !Teleport.isRealWorld)
             {
                 isAttacking = true;
-                rightBox.enabled = true;
+                rightBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkRight", true);
                 StartCoroutine(atkWait());
             }
-            else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
+            else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking && !Teleport.isRealWorld)
             {
                 isAttacking = true;
-                leftBox.enabled = true;
+                leftBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkLeft", true);
                 StartCoroutine(atkWait());
             }
@@ -242,10 +242,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
         isAttacking = false;
-        leftBox.enabled = false;
-        rightBox.enabled = false;
-        UpBox.enabled = false;
-        DownBox.enabled = false;
+        leftBox.GetComponent<BoxCollider2D>().enabled = false;
+        rightBox.GetComponent<BoxCollider2D>().enabled = false;
+        UpBox.GetComponent<BoxCollider2D>().enabled = false;
+        DownBox.GetComponent<BoxCollider2D>().enabled = false;
     }
 }
 

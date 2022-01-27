@@ -6,7 +6,7 @@ public class PlayerCollision : MonoBehaviour
 {
     public static bool RightBlocked, LeftBlocked, UpBlocked, DownBlocked;
     public GameObject right, left, up, down;
-    public float distance = 0.06f;
+    public float distance = 0.3f;
     public LayerMask ObstacleMask;
     public BoxCollider2D col;
     public GameObject player, bScreen;

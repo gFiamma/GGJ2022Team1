@@ -15,7 +15,7 @@ public class Pause : MonoBehaviour
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;							//il cursore diventa invisibile e bloccato al centro
-		Cursor.visible = false;												
+		Cursor.visible = false;
 	}
 	void Update()
 	{

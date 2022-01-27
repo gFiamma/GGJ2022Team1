@@ -4,172 +4,54 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    //variabili utili per la morte del player
-    public static bool isDead;
-
     //variabili per il movimento
-    public static bool canMove;
-    public static bool isMoving;
+    bool doOnce;
+    bool isMoving;
     private Vector3 originPos, targetPos;
     private float timeToMove = 0.35f;
-    float movementX;
-    float movementY;
+    [SerializeField]
+    private float movSpeed = default;
 
-    ////sprite del player
-    //[SerializeField]
-    //SpriteRenderer playerSprite;
     int direction;
-
-    ////animator per gestire le animazioni
-    //public Animator anim;
     void Start()
     {
-        canMove = true;
-        //anim.SetBool("MoveDown", false);
-        //anim.SetBool("MoveLeft", false);
-        //anim.SetBool("MoveUp", false);
-        //anim.SetBool("MoveRight", false);
-        //anim.SetBool("IdleDown", false);
-        //anim.SetBool("IdleLeft", false);
-        //anim.SetBool("IdleUp", false);
-        //anim.SetBool("IdleRight", false);
+        doOnce = false;
     }
 
     void Update()
     {
-        //controllo per togliere i comandi al player quando è morto e quando è in pausa
-        if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && canMove)
+        if (!doOnce)
         {
-            movementX = Random.Range(-1f, 1f);
-            movementY = Random.Range(-1f, 1f);
+            doOnce = true;
+            float x = (int)Random.Range(-2f, 2f);
+            float y = (int)Random.Range(-2f, 2f);
+            Debug.Log(x);
+            Debug.Log(y);
 
-            if (movementY > 0 && !isMoving && !PlayerCollision.UpBlocked) //W
+            if (EnemyCollision.DownBlocked) y = (int)Random.Range(-1f, 2f);
+            if (EnemyCollision.UpBlocked) y = (int)Random.Range(-2f, 1f);
+            if (EnemyCollision.LeftBlocked) x = (int)Random.Range(-1f, 2f);
+            if (EnemyCollision.RightBlocked) x = (int)Random.Range(-2f, 1f);
+
+            if (x != 0)
             {
-                direction = 1;
-                StartCoroutine(MovePlayer(Vector3.up));
+                y = 0;
             }
-            else if (movementY > 0 && !isMoving)
+            else if (y != 0)
             {
-                direction = 1;
+                x = 0;
             }
-            if (movementY < 0 && !isMoving && !PlayerCollision.DownBlocked) //S
+            else
             {
-                direction = 2;
-                StartCoroutine(MovePlayer(Vector3.down));
-            }
-            else if (movementY < 0 && !isMoving)
-            {
-                direction = 2;
-            }
-            if (movementX > 0 && !isMoving && !PlayerCollision.RightBlocked) //D
-            {
-                direction = 3;
-                StartCoroutine(MovePlayer(Vector3.right));
-            }
-            else if (movementX > 0 && !isMoving)
-            {
-                direction = 3;
-            }
-            if (movementX < 0 && !isMoving && !PlayerCollision.LeftBlocked) //A
-            {
-                direction = 4;
-                StartCoroutine(MovePlayer(Vector3.left));
-            }
-            else if (movementX < 0 && !isMoving)
-            {
-                direction = 4;
+                x = 0;
+                y = 0;
             }
 
-            //if (!isMoving)
-            //{
-            //    anim.SetBool("MoveDown", false);
-            //    anim.SetBool("MoveLeft", false);
-            //    anim.SetBool("MoveUp", false);
-            //    anim.SetBool("MoveRight", false);
-            //    if (direction == 1)
-            //    {
-            //        anim.SetBool("IdleUp", true);
-            //        anim.SetBool("IdleDown", false);
-            //        anim.SetBool("IdleRight", false);
-            //        anim.SetBool("IdleLeft", false);
-            //    }
-            //    else if (direction == 2)
-            //    {
-            //        anim.SetBool("IdleDown", true);
-            //        anim.SetBool("IdleUp", false);
-            //        anim.SetBool("IdleRight", false);
-            //        anim.SetBool("IdleLeft", false);
-            //    }
-            //    else if (direction == 3)
-            //    {
-            //        anim.SetBool("IdleRight", true);
-            //        anim.SetBool("IdleUp", false);
-            //        anim.SetBool("IdleDown", false);
-            //        anim.SetBool("IdleLeft", false);
-            //    }
-            //    else if (direction == 4)
-            //    {
-            //        anim.SetBool("IdleLeft", true);
-            //        anim.SetBool("IdleUp", false);
-            //        anim.SetBool("IdleDown", false);
-            //        anim.SetBool("IdleRight", false);
-            //    }
-            //}
-
-            //if (direction == 1 && isMoving)
-            //{
-            //    anim.SetBool("MoveUp", true);
-            //    anim.SetBool("MoveDown", false);
-            //    anim.SetBool("MoveLeft", false);
-            //    anim.SetBool("MoveRight", false);
-            //    anim.SetBool("IdleUp", false);
-            //}
-            //else if (direction == 2 && isMoving)
-            //{
-            //    anim.SetBool("MoveDown", true);
-            //    anim.SetBool("MoveLeft", false);
-            //    anim.SetBool("MoveUp", false);
-            //    anim.SetBool("MoveRight", false);
-            //    anim.SetBool("IdleDown", false);
-            //}
-            //else if (direction == 3 && isMoving)
-            //{
-            //    anim.SetBool("MoveRight", true);
-            //    anim.SetBool("MoveDown", false);
-            //    anim.SetBool("MoveLeft", false);
-            //    anim.SetBool("MoveUp", false);
-            //    anim.SetBool("IdleRight", false);
-            //}
-            //else if (direction == 4 && isMoving)
-            //{
-            //    anim.SetBool("MoveLeft", true);
-            //    anim.SetBool("MoveDown", false);
-            //    anim.SetBool("MoveUp", false);
-            //    anim.SetBool("MoveRight", false);
-            //    anim.SetBool("IdleLeft", false);
-            //}
-            //else
-            //{
-            //    anim.SetBool("MoveDown", false);
-            //    anim.SetBool("MoveLeft", false);
-            //    anim.SetBool("MoveUp", false);
-            //    anim.SetBool("MoveRight", false);
-            //}
+            Vector3 asd = new Vector3(x, y, 0);
+            StartCoroutine(MovePlayer(asd));
         }
-
-        //if (isDead || !canMove)
-        //{
-        //    anim.SetBool("MoveDown", false);
-        //    anim.SetBool("MoveLeft", false);
-        //    anim.SetBool("MoveUp", false);
-        //    anim.SetBool("MoveRight", false);
-        //    anim.SetBool("AtkUp", false);
-        //    anim.SetBool("AtkDown", false);
-        //    anim.SetBool("AtkRight", false);
-        //    anim.SetBool("AtkLeft", false);
-        //}
     }
+
     private IEnumerator MovePlayer(Vector3 direction)
     {
         isMoving = true;
@@ -187,8 +69,9 @@ public class Enemy : MonoBehaviour
         }
 
         transform.position = targetPos;
-
+        yield return new WaitForSeconds(movSpeed);
         isMoving = false;
+        doOnce = false;
     }
 }
 
