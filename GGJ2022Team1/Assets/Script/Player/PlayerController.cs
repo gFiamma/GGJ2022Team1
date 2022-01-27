@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,11 +19,13 @@ public class PlayerController : MonoBehaviour
     //sprite del player
     [SerializeField]
     SpriteRenderer playerSprite;
-    [SerializeField]
-    Sprite front, back, sideR, sideL;
     int direction;
 
+    //animator per gestire le animazioni
     public Animator anim;
+
+    //variabili per l'attacco
+    public BoxCollider2D leftBox, rightBox, UpBox, DownBox;
     bool isAttacking;
     void Start()
     {
@@ -33,7 +34,15 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("MoveLeft", false);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
+        anim.SetBool("IdleDown", false);
+        anim.SetBool("IdleLeft", false);
+        anim.SetBool("IdleUp", false);
+        anim.SetBool("IdleRight", false);
         isAttacking = false;
+        leftBox.enabled = false;
+        rightBox.enabled = false;
+        UpBox.enabled = false;
+        DownBox.enabled = false;
     } 
 
     void Update()
@@ -77,12 +86,41 @@ public class PlayerController : MonoBehaviour
                 direction = 4;
             }
 
-            if(!isMoving && !isAttacking)
+            if (!isMoving && !isAttacking)
             {
                 anim.SetBool("MoveDown", false);
                 anim.SetBool("MoveLeft", false);
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("MoveRight", false);
+                if(direction == 1)
+                {
+                    anim.SetBool("IdleUp", true);
+                    anim.SetBool("IdleDown", false);
+                    anim.SetBool("IdleRight", false);
+                    anim.SetBool("IdleLeft", false);
+                }
+                else if (direction == 2)
+                {
+                    anim.SetBool("IdleDown", true);
+                    anim.SetBool("IdleUp", false);
+                    anim.SetBool("IdleRight", false);
+                    anim.SetBool("IdleLeft", false);
+                }
+                else if (direction == 3)
+                {
+                    anim.SetBool("IdleRight", true);
+                    anim.SetBool("IdleUp", false);
+                    anim.SetBool("IdleDown", false);
+                    anim.SetBool("IdleLeft", false);
+                }
+                else if (direction == 4)
+                {
+                    anim.SetBool("IdleLeft", true);
+                    anim.SetBool("IdleUp", false);
+                    anim.SetBool("IdleDown", false);
+                    anim.SetBool("IdleRight", false);
+                }
+
             }
 
             if (direction == 1 && isMoving && !isAttacking)
@@ -91,7 +129,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveDown", false);
                 anim.SetBool("MoveLeft", false);
                 anim.SetBool("MoveRight", false);
-                //playerSprite.sprite = back;
+                anim.SetBool("IdleUp", false);
             }
             else if (direction == 2 && isMoving && !isAttacking)
             {
@@ -99,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveLeft", false);
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("MoveRight", false);
-                //playerSprite.sprite = front;
+                anim.SetBool("IdleDown", false);
             }
             else if (direction == 3 && isMoving && !isAttacking)
             {
@@ -107,7 +145,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveDown", false);
                 anim.SetBool("MoveLeft", false);
                 anim.SetBool("MoveUp", false);
-                //playerSprite.sprite = sideR;
+                anim.SetBool("IdleRight", false);
             }
             else if (direction == 4 && isMoving && !isAttacking)
             {
@@ -115,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveDown", false);
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("MoveRight", false);
-                //playerSprite.sprite = sideL;
+                anim.SetBool("IdleLeft", false);
             }
             else
             {
@@ -123,30 +161,33 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveLeft", false);
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("MoveRight", false);
-                //playerSprite.sprite = front;
             }
 
             if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking)
             {
                 isAttacking = true;
+                UpBox.enabled = true;
                 anim.SetBool("AtkUp", true);
                 StartCoroutine(atkWait());
             }
             else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
             {
                 isAttacking = true;
+                DownBox.enabled = true;
                 anim.SetBool("AtkDown", true);
                 StartCoroutine(atkWait());
             }
             else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
             {
                 isAttacking = true;
+                rightBox.enabled = true;
                 anim.SetBool("AtkRight", true);
                 StartCoroutine(atkWait());
             }
             else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
             {
                 isAttacking = true;
+                leftBox.enabled = true;
                 anim.SetBool("AtkLeft", true);
                 StartCoroutine(atkWait());
             }
@@ -195,12 +236,16 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator atkWait()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveLeft", false);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
         isAttacking = false;
+        leftBox.enabled = false;
+        rightBox.enabled = false;
+        UpBox.enabled = false;
+        DownBox.enabled = false;
     }
 }
 

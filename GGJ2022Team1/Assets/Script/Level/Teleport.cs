@@ -9,7 +9,10 @@ public class Teleport : MonoBehaviour
     public GameObject bScreen;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(Teleporting());
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Teleporting());
+        }
     }
 
     IEnumerator Teleporting()

@@ -54,7 +54,7 @@ public class FragilePlatform : MonoBehaviour
         //thisplatform.GetComponent<BoxCollider2D>().enabled = false;
         thisplatform.gameObject.tag = "death";
         //invece di disattivare il box collider, bisogna metterne uno che uccide il player
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         thisplatform.gameObject.tag = "Untagged";
         //thisplatform.GetComponent<BoxCollider2D>().enabled = true;
         thisSprite.sprite = rotto1;
