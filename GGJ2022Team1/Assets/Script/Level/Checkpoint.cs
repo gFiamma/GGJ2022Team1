@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
     public static Vector3 GetActiveCheckPointPosition()                                                                     //cerchiamo la posizione dell'ultimo checkpoint attivo
     {
         // If player die without activate any checkpoint, we will return a default position
-        Vector3 result = new Vector3(0f, 0f, 0f);                                                                              //setto la posizione base del respawn
+        Vector3 result = new Vector3(-0.5f, 0.5f, 0f);                                                                              //setto la posizione base del respawn
 
         if (CheckPointsList != null)
         {

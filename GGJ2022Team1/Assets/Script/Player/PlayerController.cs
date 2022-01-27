@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public static bool isDead;
 
     //variabili per il movimento
+    public static bool canMove;
     public static bool isMoving;
     private Vector3 originPos, targetPos;
     private float timeToMove = 0.35f;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     bool isAttacking;
     void Start()
     {
+        canMove = true;
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveLeft", false);
         anim.SetBool("MoveUp", false);
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //controllo per togliere i comandi al player quando è morto e quando è in pausa
-        if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping)
+        if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && canMove)
         {
             if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked && !isAttacking) //W
             {
@@ -82,77 +84,88 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("MoveRight", false);
             }
+
+            if (direction == 1 && isMoving && !isAttacking)
+            {
+                anim.SetBool("MoveUp", true);
+                anim.SetBool("MoveDown", false);
+                anim.SetBool("MoveLeft", false);
+                anim.SetBool("MoveRight", false);
+                //playerSprite.sprite = back;
+            }
+            else if (direction == 2 && isMoving && !isAttacking)
+            {
+                anim.SetBool("MoveDown", true);
+                anim.SetBool("MoveLeft", false);
+                anim.SetBool("MoveUp", false);
+                anim.SetBool("MoveRight", false);
+                //playerSprite.sprite = front;
+            }
+            else if (direction == 3 && isMoving && !isAttacking)
+            {
+                anim.SetBool("MoveRight", true);
+                anim.SetBool("MoveDown", false);
+                anim.SetBool("MoveLeft", false);
+                anim.SetBool("MoveUp", false);
+                //playerSprite.sprite = sideR;
+            }
+            else if (direction == 4 && isMoving && !isAttacking)
+            {
+                anim.SetBool("MoveLeft", true);
+                anim.SetBool("MoveDown", false);
+                anim.SetBool("MoveUp", false);
+                anim.SetBool("MoveRight", false);
+                //playerSprite.sprite = sideL;
+            }
+            else
+            {
+                anim.SetBool("MoveDown", false);
+                anim.SetBool("MoveLeft", false);
+                anim.SetBool("MoveUp", false);
+                anim.SetBool("MoveRight", false);
+                //playerSprite.sprite = front;
+            }
+
+            if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking)
+            {
+                isAttacking = true;
+                anim.SetBool("AtkUp", true);
+                StartCoroutine(atkWait());
+            }
+            else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
+            {
+                isAttacking = true;
+                anim.SetBool("AtkDown", true);
+                StartCoroutine(atkWait());
+            }
+            else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
+            {
+                isAttacking = true;
+                anim.SetBool("AtkRight", true);
+                StartCoroutine(atkWait());
+            }
+            else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
+            {
+                isAttacking = true;
+                anim.SetBool("AtkLeft", true);
+                StartCoroutine(atkWait());
+            }
+
+            if (!isAttacking)
+            {
+                anim.SetBool("AtkUp", false);
+                anim.SetBool("AtkDown", false);
+                anim.SetBool("AtkRight", false);
+                anim.SetBool("AtkLeft", false);
+            }
         }
 
-        if (direction == 1 && isMoving && !isAttacking)
+        if (isDead || !canMove)
         {
-            anim.SetBool("MoveUp", true);
             anim.SetBool("MoveDown", false);
-            anim.SetBool("MoveLeft", false);
-            anim.SetBool("MoveRight", false);
-            //playerSprite.sprite = back;
-        }
-        else if (direction == 2 && isMoving && !isAttacking)
-        {
-            anim.SetBool("MoveDown", true);
             anim.SetBool("MoveLeft", false);
             anim.SetBool("MoveUp", false);
             anim.SetBool("MoveRight", false);
-            //playerSprite.sprite = front;
-        }
-        else if (direction == 3 && isMoving && !isAttacking)
-        {
-            anim.SetBool("MoveRight", true);
-            anim.SetBool("MoveDown", false);
-            anim.SetBool("MoveLeft", false);
-            anim.SetBool("MoveUp", false);
-            //playerSprite.sprite = sideR;
-        }
-        else if (direction == 4 && isMoving && !isAttacking)
-        {
-            anim.SetBool("MoveLeft", true);
-            anim.SetBool("MoveDown", false);
-            anim.SetBool("MoveUp", false);
-            anim.SetBool("MoveRight", false);
-            //playerSprite.sprite = sideL;
-        }
-        else
-        {
-            anim.SetBool("MoveDown", false);
-            anim.SetBool("MoveLeft", false);
-            anim.SetBool("MoveUp", false);
-            anim.SetBool("MoveRight", false);
-            //playerSprite.sprite = front;
-        }
-
-
-        if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking)
-        {
-            isAttacking = true;
-            anim.SetBool("AtkUp", true);
-            StartCoroutine(atkWait());
-        }
-        else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
-        {
-            isAttacking = true;
-            anim.SetBool("AtkDown", true);
-            StartCoroutine(atkWait());
-        }
-        else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
-        {
-            isAttacking = true;
-            anim.SetBool("AtkRight", true);
-            StartCoroutine(atkWait());
-        }
-        else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
-        {
-            isAttacking = true;
-            anim.SetBool("AtkLeft", true);
-            StartCoroutine(atkWait());
-        }
-
-        if (!isAttacking)
-        {
             anim.SetBool("AtkUp", false);
             anim.SetBool("AtkDown", false);
             anim.SetBool("AtkRight", false);

@@ -26,19 +26,28 @@ public class HUDCanvas : MonoBehaviour
         life.text = "x" + viteT;
         collect.text = "" + collezionabileT;
 
-        if (Input.GetKeyDown(KeyCode.A) && animHud.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animHud.IsInTransition(0))
+        if (Input.GetKeyDown(KeyCode.A) && animHud.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animHud.IsInTransition(0) && !PlayerController.isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && PlayerController.canMove)
         {
             animHud.SetTrigger("active");
         }
 
         if(viteT < Inventory.vite)
         {
-            calcolaVite(viteT); 
+            calcolaVite(viteT);
         }
+        else if (PlayerController.isDead)
+        {
+            viteT = Inventory.vite;
+        }
+
 
         if (collezionabileT < Inventory.collezionabile)
         {
             calcolaCollect(collezionabileT);
+        }
+        else if (PlayerController.isDead)
+        {
+            collezionabileT = Inventory.collezionabile;
         }
 
     }
