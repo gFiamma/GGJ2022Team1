@@ -8,17 +8,23 @@ public class Teleport : MonoBehaviour
     public Animator animScreen;
     public GameObject bScreen;
     public static bool isRealWorld;
+    bool doOnce;
+
+    private void Start()
+    {
+        doOnce = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !doOnce)
         {
-
             StartCoroutine(Teleporting());
         }
     }
 
     IEnumerator Teleporting()
     {
+        doOnce = true;
         PlayerController.canMove = false;
         bScreen.SetActive(true);
         animScreen.SetBool("Transition", true);
@@ -64,9 +70,10 @@ public class Teleport : MonoBehaviour
         }
         yield return new WaitForSeconds(0.7f);
         player.transform.position = teleportTo.transform.position + new Vector3(1, 0, 0);
+        isRealWorld = !isRealWorld;
         yield return new WaitForSeconds(.5f);
         animScreen.SetBool("Transition", false);
-        if (isRealWorld)
+        if (!isRealWorld)
         {
             AudioManager.AudioList[1].Stop();
             AudioManager.AudioList[0].Play();
@@ -115,6 +122,6 @@ public class Teleport : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         PlayerController.canMove = true;
         bScreen.SetActive(false);
-        isRealWorld = !isRealWorld;
+        doOnce = false;
     }
 }

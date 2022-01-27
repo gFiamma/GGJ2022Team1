@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2 : MonoBehaviour
 {
 
     //variabili utili per la morte del player
@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
     //animator per gestire le animazioni
     public Animator anim;
 
-    //variabili per l'attacco
-    public GameObject leftBox, rightBox, UpBox, DownBox;
-    bool isAttacking;
     void Start()
     {
         canMove = true;
@@ -38,11 +35,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IdleLeft", false);
         anim.SetBool("IdleUp", false);
         anim.SetBool("IdleRight", false);
-        isAttacking = false;
-        leftBox.GetComponent<BoxCollider2D>().enabled = false;
-        rightBox.GetComponent<BoxCollider2D>().enabled = false;
-        UpBox.GetComponent<BoxCollider2D>().enabled = false;
-        DownBox.GetComponent<BoxCollider2D>().enabled = false;
     } 
 
     void Update()
@@ -50,15 +42,15 @@ public class PlayerController : MonoBehaviour
         //controllo per togliere i comandi al player quando è morto e quando è in pausa
         if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && canMove)
         {
-            if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked && !isAttacking) //W
+            if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked) //W
             {
                 direction = 1;
                 StartCoroutine(MovePlayer(Vector3.up));
-            }else if(Input.GetAxis("Vertical") > 0 && !isMoving && !isAttacking)
+            }else if(Input.GetAxis("Vertical") > 0 && !isMoving)
             {
                 direction = 1;
             }
-            if (Input.GetAxis("Vertical") < 0 && !isMoving && !PlayerCollision.DownBlocked && !isAttacking) //S
+            if (Input.GetAxis("Vertical") < 0 && !isMoving && !PlayerCollision.DownBlocked) //S
             {
                 direction = 2;
                 StartCoroutine(MovePlayer(Vector3.down));
@@ -67,7 +59,7 @@ public class PlayerController : MonoBehaviour
             {
                 direction = 2;
             }
-            if (Input.GetAxis("Horizontal") > 0 && !isMoving && !PlayerCollision.RightBlocked && !isAttacking) //D
+            if (Input.GetAxis("Horizontal") > 0 && !isMoving && !PlayerCollision.RightBlocked) //D
             {
                 direction = 3;
                 StartCoroutine(MovePlayer(Vector3.right));
@@ -76,17 +68,17 @@ public class PlayerController : MonoBehaviour
             {
                 direction = 3;
             }
-            if (Input.GetAxis("Horizontal") < 0 && !isMoving && !PlayerCollision.LeftBlocked && !isAttacking) //A
+            if (Input.GetAxis("Horizontal") < 0 && !isMoving && !PlayerCollision.LeftBlocked) //A
             {
                 direction = 4;
                 StartCoroutine(MovePlayer(Vector3.left));
             }
-            else if (Input.GetAxis("Horizontal") < 0 && !isMoving && !isAttacking)
+            else if (Input.GetAxis("Horizontal") < 0 && !isMoving)
             {
                 direction = 4;
             }
 
-            if (!isMoving && !isAttacking)
+            if (!isMoving)
             {
                 anim.SetBool("MoveDown", false);
                 anim.SetBool("MoveLeft", false);
@@ -123,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (direction == 1 && isMoving && !isAttacking)
+            if (direction == 1 && isMoving)
             {
                 anim.SetBool("MoveUp", true);
                 anim.SetBool("MoveDown", false);
@@ -131,7 +123,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveRight", false);
                 anim.SetBool("IdleUp", false);
             }
-            else if (direction == 2 && isMoving && !isAttacking)
+            else if (direction == 2 && isMoving)
             {
                 anim.SetBool("MoveDown", true);
                 anim.SetBool("MoveLeft", false);
@@ -139,7 +131,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveRight", false);
                 anim.SetBool("IdleDown", false);
             }
-            else if (direction == 3 && isMoving && !isAttacking)
+            else if (direction == 3 && isMoving)
             {
                 anim.SetBool("MoveRight", true);
                 anim.SetBool("MoveDown", false);
@@ -147,7 +139,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("IdleRight", false);
             }
-            else if (direction == 4 && isMoving && !isAttacking)
+            else if (direction == 4 && isMoving)
             {
                 anim.SetBool("MoveLeft", true);
                 anim.SetBool("MoveDown", false);
@@ -162,43 +154,6 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveUp", false);
                 anim.SetBool("MoveRight", false);
             }
-
-            if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking)
-            {
-                isAttacking = true;
-                UpBox.GetComponent<BoxCollider2D>().enabled = true;
-                anim.SetBool("AtkUp", true);
-                StartCoroutine(atkWait());
-            }
-            else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
-            {
-                isAttacking = true;
-                DownBox.GetComponent<BoxCollider2D>().enabled = true;
-                anim.SetBool("AtkDown", true);
-                StartCoroutine(atkWait());
-            }
-            else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
-            {
-                isAttacking = true;
-                rightBox.GetComponent<BoxCollider2D>().enabled = true;
-                anim.SetBool("AtkRight", true);
-                StartCoroutine(atkWait());
-            }
-            else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
-            {
-                isAttacking = true;
-                leftBox.GetComponent<BoxCollider2D>().enabled = true;
-                anim.SetBool("AtkLeft", true);
-                StartCoroutine(atkWait());
-            }
-
-            if (!isAttacking)
-            {
-                anim.SetBool("AtkUp", false);
-                anim.SetBool("AtkDown", false);
-                anim.SetBool("AtkRight", false);
-                anim.SetBool("AtkLeft", false);
-            }
         }
 
         if (isDead || !canMove)
@@ -207,10 +162,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("MoveLeft", false);
             anim.SetBool("MoveUp", false);
             anim.SetBool("MoveRight", false);
-            anim.SetBool("AtkUp", false);
-            anim.SetBool("AtkDown", false);
-            anim.SetBool("AtkRight", false);
-            anim.SetBool("AtkLeft", false);
         }
     }
     private IEnumerator MovePlayer(Vector3 direction)
@@ -232,20 +183,6 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
-    }
-
-    private IEnumerator atkWait()
-    {
-        yield return new WaitForSeconds(0.5f);
-        anim.SetBool("MoveDown", false);
-        anim.SetBool("MoveLeft", false);
-        anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveRight", false);
-        isAttacking = false;
-        leftBox.GetComponent<BoxCollider2D>().enabled = false;
-        rightBox.GetComponent<BoxCollider2D>().enabled = false;
-        UpBox.GetComponent<BoxCollider2D>().enabled = false;
-        DownBox.GetComponent<BoxCollider2D>().enabled = false;
     }
 }
 
