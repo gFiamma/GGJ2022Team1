@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AttackUp
+  m_Name: AttackRight2
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -51,19 +51,19 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Collider/Up
+    path: Collider/Right
     classID: 212
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7f4469a4529829d46a4931e755a2339d, type: 3}
+      value: {fileID: 21300000, guid: b5d7d19ce048168428ea4faf7d8a983e, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: f586d0b8df5e6f94c85007958782cb63, type: 3}
+      value: {fileID: 21300000, guid: e79f47356f92d0d4aacd908eb606860e, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 842cc78637cdce04297ae2a73a5017d4, type: 3}
+      value: {fileID: 21300000, guid: e76817bb19852a7468198f6d55f34037, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: 7f4469a4529829d46a4931e755a2339d, type: 3}
+      value: {fileID: 21300000, guid: b5d7d19ce048168428ea4faf7d8a983e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -76,7 +76,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2158320411
+      path: 941886417
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
@@ -90,10 +90,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7f4469a4529829d46a4931e755a2339d, type: 3}
-    - {fileID: 21300000, guid: f586d0b8df5e6f94c85007958782cb63, type: 3}
-    - {fileID: 21300000, guid: 842cc78637cdce04297ae2a73a5017d4, type: 3}
-    - {fileID: 21300000, guid: 7f4469a4529829d46a4931e755a2339d, type: 3}
+    - {fileID: 21300000, guid: b5d7d19ce048168428ea4faf7d8a983e, type: 3}
+    - {fileID: 21300000, guid: e79f47356f92d0d4aacd908eb606860e, type: 3}
+    - {fileID: 21300000, guid: e76817bb19852a7468198f6d55f34037, type: 3}
+    - {fileID: 21300000, guid: b5d7d19ce048168428ea4faf7d8a983e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -149,7 +149,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: Collider/Up
+    path: Collider/Right
     classID: 212
     script: {fileID: 0}
   m_EulerEditorCurves: []
