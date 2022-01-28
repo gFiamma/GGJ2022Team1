@@ -52,8 +52,16 @@ public class Pause : MonoBehaviour
 		GameIsPaused = true;                                                //la booleana che setta la pausa diventa true
 		EventSystem.current.SetSelectedGameObject(null);					//nell'event system nulla è selezionato
 		EventSystem.current.SetSelectedGameObject(FirstButton);             //il primo bottone è selezionato dall'event system
-		//cambio musiche
-
+        if (Teleport.isRealWorld)
+        {
+			AudioManager.AudioList[2].Play();
+			AudioManager.AudioList[1].Stop();
+        }
+        else
+        {
+			AudioManager.AudioList[2].Play();
+			AudioManager.AudioList[0].Stop();
+		}
 	}
 
 	public void Resume()
@@ -67,7 +75,16 @@ public class Pause : MonoBehaviour
 		OptionMenuUI.SetActive(false);                                       //l'intero HUD della pausa viene reso falso
 		Time.timeScale = 1f;                                                //il tempo torna alla normalità
 		StartCoroutine(waitJump());                                         //dato che dava problemi che saltava appena finiva il dialogo, ho deciso di fare così per evitare problemi
-		//cambio musiche
+		if (Teleport.isRealWorld)
+		{
+			AudioManager.AudioList[1].Play();
+			AudioManager.AudioList[2].Stop();
+		}
+		else
+		{
+			AudioManager.AudioList[0].Play();
+			AudioManager.AudioList[2].Stop();
+		}
 	}
 
 	public void LoadMenu()

@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
 	public float tempo;
 	public GameObject sfondoAnim;
 	public Animator animSfondo;
+	public AudioSource Musichetta;
 	void Start()
 	{
 		StartCoroutine(Inizio());
@@ -27,6 +28,7 @@ public class Menu : MonoBehaviour
 
 	public void LoadLevel(string SceneName)
 	{
+		Inventory.Reset();
 		SceneManager.LoadScene(SceneName);                                    //si passa al menu principale
 	}
 
@@ -59,6 +61,7 @@ public class Menu : MonoBehaviour
     {
 		sfondoAnim.SetActive(true);
 		animSfondo.SetTrigger("active");
+		Musichetta.Play();
 		yield return new WaitForSeconds(1f);
 		sfondoAnim.SetActive(false);
 		EventSystem.current.SetSelectedGameObject(null);                    //nell'event system nulla è selezionato

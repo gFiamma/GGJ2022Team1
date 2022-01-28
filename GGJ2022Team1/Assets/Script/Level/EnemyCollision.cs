@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    public static bool RightBlocked, LeftBlocked, UpBlocked, DownBlocked;
+    public GameObject fullEnemy;
+    public bool RightBlocked, LeftBlocked, UpBlocked, DownBlocked;
     public GameObject right, left, up, down;
-    public float distance = 0.5f;
+    public float distance = 0.3f;
     public LayerMask ObstacleMask;
 
     private void Update()
@@ -23,5 +24,15 @@ public class EnemyCollision : MonoBehaviour
         Gizmos.DrawWireSphere(left.transform.position, distance);
         Gizmos.DrawWireSphere(up.transform.position, distance);
         Gizmos.DrawWireSphere(down.transform.position, distance);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Up") || collision.gameObject.CompareTag("Down") || 
+            collision.gameObject.CompareTag("Left") || collision.gameObject.CompareTag("Right"))
+        {
+            AudioManager.AudioList[15].Play();
+            Destroy(fullEnemy);
+        }
     }
 }

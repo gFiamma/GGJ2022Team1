@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerCollision : MonoBehaviour
 {
     public static bool RightBlocked, LeftBlocked, UpBlocked, DownBlocked;
@@ -29,31 +29,35 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("death") && !doOnce)
         {
-            doOnce = true;
-            Debug.Log("Player Morto");
             Death();
         }
     }
 
-    void Death()
+    public void Death()
     {
         StartCoroutine(DeathCoroutine());
     }
 
     IEnumerator DeathCoroutine()
     {
+        doOnce = true;
         col.enabled = false;
         PlayerController.isDead = true;
         playerAnim.SetTrigger("Dead");
         Inventory.vite--;
+        AudioManager.AudioList[7].Play();
         yield return new WaitForSeconds(1f);
         bScreen.SetActive(true);
         animScreen.SetBool("Transition", true);
         yield return new WaitForSeconds(2f);
+        if (Inventory.vite == 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
         player.transform.position = Checkpoint.GetActiveCheckPointPosition();
         yield return new WaitForSeconds(1f);
         animScreen.SetBool("Transition", false);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         bScreen.SetActive(false);
         col.enabled = true;
         PlayerController.isDead = false;

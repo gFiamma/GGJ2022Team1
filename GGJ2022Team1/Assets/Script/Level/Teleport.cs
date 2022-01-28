@@ -30,42 +30,26 @@ public class Teleport : MonoBehaviour
         animScreen.SetBool("Transition", true);
         if (!isRealWorld)
         {
-            AudioManager.AudioList[0].volume = 0.4f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.35f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.3f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.25f;
-            yield return new WaitForSeconds(0.1f);
             AudioManager.AudioList[0].volume = 0.2f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.15f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0f;
         }
         else
         {
-            AudioManager.AudioList[1].volume = 0.4f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.35f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.3f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.25f;
-            yield return new WaitForSeconds(0.1f);
             AudioManager.AudioList[1].volume = 0.2f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.15f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0f;
         }
         yield return new WaitForSeconds(0.7f);
@@ -79,22 +63,14 @@ public class Teleport : MonoBehaviour
             AudioManager.AudioList[0].Play();
 
             AudioManager.AudioList[0].volume = 0;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.15f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[0].volume = 0.2f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.25f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.3f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.35f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[0].volume = 0.4f;
         }
         else
         {
@@ -102,22 +78,14 @@ public class Teleport : MonoBehaviour
             AudioManager.AudioList[1].Play();
 
             AudioManager.AudioList[1].volume = 0;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.15f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             AudioManager.AudioList[1].volume = 0.2f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.25f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.3f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.35f;
-            yield return new WaitForSeconds(0.1f);
-            AudioManager.AudioList[1].volume = 0.4f;
         }
         yield return new WaitForSeconds(0.7f);
         PlayerController.canMove = true;

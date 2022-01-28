@@ -168,6 +168,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 UpBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkUp", true);
+                AudioManager.AudioList[17].Play();
                 StartCoroutine(atkWait());
             }
             else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
@@ -175,6 +176,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 DownBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkDown", true);
+                AudioManager.AudioList[17].Play();
                 StartCoroutine(atkWait());
             }
             else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
@@ -182,6 +184,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 rightBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkRight", true);
+                AudioManager.AudioList[17].Play();
                 StartCoroutine(atkWait());
             }
             else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
@@ -189,6 +192,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 leftBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkLeft", true);
+                AudioManager.AudioList[17].Play();
                 StartCoroutine(atkWait());
             }
 
@@ -221,14 +225,15 @@ public class PlayerController : MonoBehaviour
 
         originPos = transform.position;
         targetPos = originPos + direction;
-
-        while(elapsedTime < timeToMove)
+        AudioManager.AudioList[10].pitch = Random.Range(1.2f, 1.6f);
+        AudioManager.AudioList[10].volume = Random.Range(0.05f, 0.35f);
+        AudioManager.AudioList[10].Play();
+        while (elapsedTime < timeToMove)
         {
             transform.position = Vector3.Lerp(originPos, targetPos, (elapsedTime / timeToMove));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.position = targetPos;
 
         isMoving = false;

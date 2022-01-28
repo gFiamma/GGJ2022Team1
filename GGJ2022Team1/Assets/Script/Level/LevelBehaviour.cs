@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class LevelBehaviour : MonoBehaviour
 {
-    public GameObject player, spriteFantasy,spriteReal;
+    public GameObject player, spriteFantasy,spriteReal, blackScreen;
     public PlayerController FScript;
     public PlayerController2 RScript;
+    public Animator anim;
 
     void Start()
     {
+        blackScreen.SetActive(true);
+        anim.SetBool("Transition", false);
+        StartCoroutine(animScreen());
         if(DialogueManager.Yes >= DialogueManager.No)
         {
             player.transform.position = new Vector3(-0.5f, 0.5f, 0);
@@ -42,5 +46,11 @@ public class LevelBehaviour : MonoBehaviour
             FScript.enabled = false;
             RScript.enabled = true;
         }
+    }
+
+    IEnumerator animScreen()
+    {
+        yield return new WaitForSeconds(1.2f);
+        blackScreen.SetActive(false);
     }
 }
