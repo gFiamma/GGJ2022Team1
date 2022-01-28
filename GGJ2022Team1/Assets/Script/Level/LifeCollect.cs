@@ -14,8 +14,9 @@ public class LifeCollect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            AudioManager.AudioList[5].Play();
             Inventory.vite++;
+            Destroy(gameObject);
         }
     }
 }

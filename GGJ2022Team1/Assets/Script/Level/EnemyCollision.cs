@@ -31,7 +31,7 @@ public class EnemyCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Up") || collision.gameObject.CompareTag("Down") || 
             collision.gameObject.CompareTag("Left") || collision.gameObject.CompareTag("Right"))
         {
-            AudioManager.AudioList[15].Play();
+            AudioManager.AudioList[13].Play();
             Destroy(fullEnemy);
         }
     }

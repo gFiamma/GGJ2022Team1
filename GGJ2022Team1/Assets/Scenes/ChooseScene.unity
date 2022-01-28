@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 33879172}
   - component: {fileID: 33879171}
   - component: {fileID: 33879173}
+  - component: {fileID: 33879175}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -236,6 +237,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2000266989}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &33879174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -257,6 +270,35 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00024986, y: 43}
   m_SizeDelta: {x: 309.34, y: 74.552}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &33879175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33879170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 225608474}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &96688126
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +311,7 @@ GameObject:
   - component: {fileID: 96688130}
   - component: {fileID: 96688129}
   - component: {fileID: 96688128}
+  - component: {fileID: 96688131}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -353,6 +396,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2000266989}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &96688129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +446,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96688126}
   m_CullTransparentMesh: 1
+--- !u!114 &96688131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96688126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 225608474}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &192685092
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +555,134 @@ RectTransform:
   m_AnchoredPosition: {x: 379, y: -103}
   m_SizeDelta: {x: -649.015, y: -213.402}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &225608473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225608475}
+  - component: {fileID: 225608474}
+  m_Layer: 0
+  m_Name: SelezioneTasto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &225608474
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225608473}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -478727547509667374, guid: cec62507e0dc964418f6583298ec0d9a, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 4db5d9d79d244f546bbaa5d268f02f1c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &225608475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225608473}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.38440895, y: 0.43228182, z: 0.0015194127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &233697510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2266,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741639593}
   m_CullTransparentMesh: 1
+--- !u!1 &2000266988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000266990}
+  - component: {fileID: 2000266989}
+  m_Layer: 0
+  m_Name: TastoPremuto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &2000266989
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000266988}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -478727547509667374, guid: cec62507e0dc964418f6583298ec0d9a, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5abec5f793774544eb72d5bacdd4fc12, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2000266990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000266988}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.38440895, y: 0.43228182, z: 0.0015194127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022330432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,8 +2517,8 @@ MonoBehaviour:
     lines:
     - Allora
     - Ti piacerebbe andare in un posto migliore?
-    Name: ???
-    Face: {fileID: 21300000, guid: 39b5be0519c674545853119133854015, type: 3}
+    Name: Antonio
+    Face: {fileID: 21300000, guid: bebdcc8673bbf524197fb004de24e043, type: 3}
   wantAResponse: 1
   musica: {fileID: 922387828}
   anim: {fileID: 1339033542}
@@ -2201,14 +2541,14 @@ MonoBehaviour:
     lines:
     - Ho capito.
     - Sicuro al 100% di voler questo?
-    Name: ???
-    Face: {fileID: 21300000, guid: 39b5be0519c674545853119133854015, type: 3}
+    Name: Cristian
+    Face: {fileID: 21300000, guid: 658960f9c098bfc4e94fb532b7d2a923, type: 3}
   dialogue2:
     lines:
     - Ottimo!
     - Vorresti tornare alla tua vita?
-    Name: ???
-    Face: {fileID: 21300000, guid: 0799032d4914ea44aad5c82b0a28b805, type: 3}
+    Name: Neko
+    Face: {fileID: 21300000, guid: d32bef1bbe8be6e498e885cfd5654abb, type: 3}
   wantAResponse: 1
   altroDialogo: {fileID: 2022330441}
 --- !u!114 &2022330440
@@ -2227,14 +2567,14 @@ MonoBehaviour:
     lines:
     - Interessante...
     - Ti piacerebbe un mondo magico?
-    Name: ???
-    Face: {fileID: 21300000, guid: 39b5be0519c674545853119133854015, type: 3}
+    Name: Marcello
+    Face: {fileID: 21300000, guid: 643dc56d322d18247b33ec9f9e9fb665, type: 3}
   dialogue2:
     lines:
     - E' un vero peccato...
     - Ti piacerebbe morire?
-    Name: ???
-    Face: {fileID: 21300000, guid: 0799032d4914ea44aad5c82b0a28b805, type: 3}
+    Name: Donatello
+    Face: {fileID: 21300000, guid: 9f1f681a3cceb8846817b23d73dcbb13, type: 3}
   wantAResponse: 1
   altroDialogo: {fileID: 2022330439}
 --- !u!114 &2022330441
@@ -2252,12 +2592,12 @@ MonoBehaviour:
   dialogue:
     lines:
     - Grande, ci vediamo presto, Mei!
-    Name: ???
-    Face: {fileID: 21300000, guid: 20279e7d9313248458215bbebcb89c07, type: 3}
+    Name: Hamtaro
+    Face: {fileID: 21300000, guid: 179aae1cfcebd3549adbd8c2999d1f60, type: 3}
   dialogue2:
     lines:
-    - Ho capito, ci vediamo presto, Mei!
-    Name: ???
-    Face: {fileID: 21300000, guid: 70aae4ed95e90f44c8a26dd5bfe1aeb3, type: 3}
+    - Ho capito, Buonanotte Mei!
+    Name: A Mimir
+    Face: {fileID: 21300000, guid: e4d3c782f382c7745ac964ce64d9b9ab, type: 3}
   wantAResponse: 0
   altroDialogo: {fileID: 2022330441}

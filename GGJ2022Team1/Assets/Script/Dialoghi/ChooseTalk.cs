@@ -79,8 +79,6 @@ public class ChooseTalk : MonoBehaviour             //video di sfondo: https://w
     IEnumerator animScreen()
     {
         blackScreen.SetActive(true);
-        anim.SetBool("Transition", true);
-        yield return new WaitForSeconds(1.2f);
         anim.SetBool("Transition", false);
         yield return new WaitForSeconds(1.2f);
         blackScreen.SetActive(false);

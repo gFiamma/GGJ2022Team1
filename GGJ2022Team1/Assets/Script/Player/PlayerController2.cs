@@ -172,9 +172,9 @@ public class PlayerController2 : MonoBehaviour
 
         originPos = transform.position;
         targetPos = originPos + direction;
-        AudioManager.AudioList[10].pitch = Random.Range(1.2f, 1.6f);
-        AudioManager.AudioList[10].volume = Random.Range(0.05f, 0.35f);
-        AudioManager.AudioList[10].Play();
+        AudioManager.AudioList[16].pitch = Random.Range(1.2f, 1.6f);
+        AudioManager.AudioList[16].volume = Random.Range(0.05f, 0.35f);
+        AudioManager.AudioList[16].Play();
         while (elapsedTime < timeToMove)
         {
             transform.position = Vector3.Lerp(originPos, targetPos, (elapsedTime / timeToMove));

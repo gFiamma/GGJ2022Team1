@@ -7,8 +7,6 @@ public class Checkpoint : MonoBehaviour
     //riferimento al particellare da far partire quando viene preso il checkpoint
     public ParticleSystem particles;
 
-    //private AudioManager AudioManag;
-
     /// Indicate if the checkpoint is activated
     public bool Activated = false;                                                                                         //setto la bool dell'attivazione del checkpoint a falso
 
@@ -48,21 +46,17 @@ public class Checkpoint : MonoBehaviour
         // We deactive all checkpoints in the scene
         foreach (GameObject cp in CheckPointsList)
         {
-            //cp.GetComponent<SpriteRenderer>().color = Color.white;                                                          //resettiamo il colore a tutti i checkpoint
             cp.GetComponent<SpriteRenderer>().sprite = checkDisabled;                                                          //resettiamo lo sprite renderer a tutti i checkpoint
             cp.GetComponent<Checkpoint>().Activated = false;                                                                //disattiviamo tutti i checkpoint
         }
 
         // We activated the current checkpoint
         Activated = true;                                                                                                   //attiviamo solo il checkpoint corrente
-        //GetComponent<SpriteRenderer>().color = Color.green;                                                              //cambiamo il colore al checkpoint attivo
         GetComponent<SpriteRenderer>().sprite = checkActive;                                                          //attiviamo lo sprite renderer al checkpoint attivo
     }
 
     void Start()
     {
-        //AudioManag = FindObjectOfType<AudioManager>();
-
         // We search all the checkpoints in the current scene
         CheckPointsList = GameObject.FindGameObjectsWithTag("CheckPoint");                                                  //vengono cercati tutti i checkpoint nella scena
     }
@@ -74,7 +68,7 @@ public class Checkpoint : MonoBehaviour
         {
             ActivateCheckPoint();                                                                                           //il checkpoint viene attivato
             particles.Play();                                                                                                   //fa partire il particellare
-            //audio Checkpoint
+            AudioManager.AudioList[6].Play();
         }
     }
 }

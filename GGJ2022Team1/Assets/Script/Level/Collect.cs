@@ -14,8 +14,10 @@ public class Collect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            AudioManager.AudioList[4].Play();
             Inventory.collezionabile++;
+            Destroy(gameObject);
+
         }
     }
 }

@@ -53,7 +53,8 @@ public class Teleport : MonoBehaviour
             AudioManager.AudioList[1].volume = 0f;
         }
         yield return new WaitForSeconds(0.7f);
-        player.transform.position = teleportTo.transform.position + new Vector3(1, 0, 0);
+        AudioManager.AudioList[12].Play();
+        player.transform.position = teleportTo.transform.position + new Vector3(0, -1, 0);
         isRealWorld = !isRealWorld;
         yield return new WaitForSeconds(.5f);
         animScreen.SetBool("Transition", false);
