@@ -526,7 +526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Premi Space per andare Avanti
+  m_Text: Press Space to Continue
 --- !u!222 &192685094
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -552,7 +552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 379, y: -103}
+  m_AnchoredPosition: {x: 335.99988, y: -78.99997}
   m_SizeDelta: {x: -649.015, y: -213.402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &225608473
@@ -888,7 +888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.3740234, y: 28}
+  m_AnchoredPosition: {x: 1, y: 6}
   m_SizeDelta: {x: -46.668, y: -90.593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &555597348
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0c79651648b93ee4f83dafb3b9e450a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1472,7 +1472,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1527,7 +1527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -164, y: 44}
+  m_AnchoredPosition: {x: -164, y: 78.6}
   m_SizeDelta: {x: 223.344, y: 223.344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293503289
@@ -1550,8 +1550,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 376c1e4a0450d784faaede0710e5d7db, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1651,7 +1651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1339033539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1790,7 +1790,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5aa33cc94dfceb74d98d5b707ee2b833, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1868,7 +1868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 68e821b89f6ffde40b83b48ee5340bf4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2010,7 +2010,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Premi A per andare Avanti
+  m_Text: Press A to Continue
 --- !u!222 &1709989089
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2036,7 +2036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 379, y: -103.00003}
+  m_AnchoredPosition: {x: 336, y: -79}
   m_SizeDelta: {x: -649.015, y: -213.402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1717821584
@@ -2517,8 +2517,8 @@ MonoBehaviour:
     lines:
     - Allora
     - Ti piacerebbe andare in un posto migliore?
-    Name: Antonio
-    Face: {fileID: 21300000, guid: bebdcc8673bbf524197fb004de24e043, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
   musica: {fileID: 922387828}
   anim: {fileID: 1339033542}
@@ -2541,14 +2541,14 @@ MonoBehaviour:
     lines:
     - Ho capito.
     - Sicuro al 100% di voler questo?
-    Name: Cristian
-    Face: {fileID: 21300000, guid: 658960f9c098bfc4e94fb532b7d2a923, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   dialogue2:
     lines:
     - Ottimo!
     - Vorresti tornare alla tua vita?
-    Name: Neko
-    Face: {fileID: 21300000, guid: d32bef1bbe8be6e498e885cfd5654abb, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
   altroDialogo: {fileID: 2022330441}
 --- !u!114 &2022330440
@@ -2567,14 +2567,14 @@ MonoBehaviour:
     lines:
     - Interessante...
     - Ti piacerebbe un mondo magico?
-    Name: Marcello
-    Face: {fileID: 21300000, guid: 643dc56d322d18247b33ec9f9e9fb665, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   dialogue2:
     lines:
     - E' un vero peccato...
     - Ti piacerebbe morire?
-    Name: Donatello
-    Face: {fileID: 21300000, guid: 9f1f681a3cceb8846817b23d73dcbb13, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
   altroDialogo: {fileID: 2022330439}
 --- !u!114 &2022330441
@@ -2592,12 +2592,12 @@ MonoBehaviour:
   dialogue:
     lines:
     - Grande, ci vediamo presto, Mei!
-    Name: Hamtaro
-    Face: {fileID: 21300000, guid: 179aae1cfcebd3549adbd8c2999d1f60, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   dialogue2:
     lines:
     - Ho capito, Buonanotte Mei!
-    Name: A Mimir
-    Face: {fileID: 21300000, guid: e4d3c782f382c7745ac964ce64d9b9ab, type: 3}
+    Name: Dango's Queen
+    Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   wantAResponse: 0
   altroDialogo: {fileID: 2022330441}
