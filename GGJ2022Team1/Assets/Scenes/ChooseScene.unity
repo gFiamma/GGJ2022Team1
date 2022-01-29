@@ -2515,9 +2515,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - Allora
-    - Ti piacerebbe andare in un posto migliore?
-    Name: Dango's Queen
+    - Hey Mei, Wake up!
+    - You're dreaming now!
+    - Do you really want to sleep until late?
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
   musica: {fileID: 922387828}
@@ -2539,15 +2540,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - Ho capito.
-    - Sicuro al 100% di voler questo?
-    Name: Dango's Queen
+    - Understood~
+    - Do you want to play forever?
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   dialogue2:
     lines:
-    - Ottimo!
-    - Vorresti tornare alla tua vita?
-    Name: Dango's Queen
+    - Understood.
+    - So are you going to wake up?
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
   altroDialogo: {fileID: 2022330441}
@@ -2565,15 +2566,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - Interessante...
-    - Ti piacerebbe un mondo magico?
-    Name: Dango's Queen
+    - Understandble... I like to wake up late too.
+    - Do you want to be happy?
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   dialogue2:
     lines:
-    - E' un vero peccato...
-    - Ti piacerebbe morire?
-    Name: Dango's Queen
+    - 'Oh... '
+    - Didn't you told me that you would stay with me?
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
   altroDialogo: {fileID: 2022330439}
@@ -2591,13 +2592,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - Grande, ci vediamo presto, Mei!
-    Name: Dango's Queen
+    - Well!
+    - See you later, Mei!~
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   dialogue2:
     lines:
-    - Ho capito, Buonanotte Mei!
-    Name: Dango's Queen
+    - Well...
+    - ...
+    - Good Luck, Mei.
+    Name: Dango Queen
     Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   wantAResponse: 0
   altroDialogo: {fileID: 2022330441}

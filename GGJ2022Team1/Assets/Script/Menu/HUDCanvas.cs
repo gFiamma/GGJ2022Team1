@@ -13,6 +13,9 @@ public class HUDCanvas : MonoBehaviour
     bool doOnce = false;
     bool doOnce2 = false;
 
+    public Image yesBar;
+    public Image noBar;
+
     // Update is called once per frame
     private void Start()
     {
@@ -25,7 +28,9 @@ public class HUDCanvas : MonoBehaviour
         life.text = "x" + viteT;
         collect.text = "" + collezionabileT;
 
-        if (Input.GetKeyDown(KeyCode.A) && animHud.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animHud.IsInTransition(0) && !PlayerController.isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && PlayerController.canMove)
+        CalcolaValore();
+
+        if (Input.GetButtonDown("Spell") && animHud.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animHud.IsInTransition(0) && !PlayerController.isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && PlayerController.canMove)
         {
             animHud.SetTrigger("active");
         }
@@ -94,5 +99,21 @@ public class HUDCanvas : MonoBehaviour
         collezionabileT++;
         yield return new WaitForSeconds(0.5f);
         doOnce2 = false;
+    }
+
+    void CalcolaValore()
+    {
+
+        float amount = (DialogueManager.Yes);
+        amount /= 100;
+        yesBar.fillAmount = amount;
+
+        float amount2 = (DialogueManager.No);
+        amount2 /= 100;
+        noBar.fillAmount = amount;
+
+        Debug.Log(amount);
+        Debug.Log(amount2);
+
     }
 }

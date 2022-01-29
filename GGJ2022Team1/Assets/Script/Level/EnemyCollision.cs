@@ -10,6 +10,8 @@ public class EnemyCollision : MonoBehaviour
     public float distance = 0.3f;
     public LayerMask ObstacleMask;
 
+    public bool isMuffin;
+
     private void Update()
     {
         RightBlocked = Physics2D.OverlapCircle(right.transform.position, distance, ObstacleMask);
@@ -31,7 +33,15 @@ public class EnemyCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Up") || collision.gameObject.CompareTag("Down") || 
             collision.gameObject.CompareTag("Left") || collision.gameObject.CompareTag("Right"))
         {
-            AudioManager.AudioList[13].Play();
+            if (isMuffin)
+            {
+                AudioManager.AudioList[13].Play();
+            }
+            else
+            {
+                AudioManager.AudioList[14].Play();
+            }
+
             Destroy(fullEnemy);
         }
     }
