@@ -19,7 +19,8 @@ public class Menu : MonoBehaviour
 	{
 		StartCoroutine(Inizio());
 		Cursor.lockState = CursorLockMode.Locked;                           //il cursore diventa invisibile e bloccato al centro
-		Cursor.visible = false;                   
+		Cursor.visible = false;
+		animSfondo.SetBool("active", false);
 	}
 	void Update()
 	{
@@ -60,8 +61,10 @@ public class Menu : MonoBehaviour
 	IEnumerator stopVideo()
     {
 		sfondoAnim.SetActive(true);
-		animSfondo.SetTrigger("active");
+		animSfondo.SetBool("active", true);
 		Musichetta.Play();
+		yield return new WaitForSeconds(1f);
+		animSfondo.SetBool("active", false);
 		yield return new WaitForSeconds(1f);
 		sfondoAnim.SetActive(false);
 		EventSystem.current.SetSelectedGameObject(null);                    //nell'event system nulla è selezionato
