@@ -26,6 +26,7 @@ public class Teleport : MonoBehaviour
     {
         doOnce = true;
         PlayerController.canMove = false;
+        PlayerController2.canMove = false;
         bScreen.SetActive(true);
         animScreen.SetBool("Transition", true);
         if (!isRealWorld)
@@ -90,6 +91,7 @@ public class Teleport : MonoBehaviour
         }
         yield return new WaitForSeconds(0.7f);
         PlayerController.canMove = true;
+        PlayerController2.canMove = true;
         bScreen.SetActive(false);
         doOnce = false;
     }
