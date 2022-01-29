@@ -6,7 +6,7 @@ public class FragilePlatform : MonoBehaviour
 {
     public GameObject thisplatform = default;                                                                                       //prendo in reference una piattaforma                                 
     private SpriteRenderer thisSprite = default;                                                                                    //creo una reference privata per lo sprite render della piattaforma
-    public Sprite rotto1, rotto2;
+    public Sprite rotto1, rotto2, rotto3, rotto4;
     bool doOnce;
     private void Start()
     {
@@ -41,11 +41,13 @@ public class FragilePlatform : MonoBehaviour
         thisSprite.sprite = rotto2;
         yield return new WaitForSeconds(0.2f);
         thisSprite.enabled = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
+        thisSprite.sprite = rotto3;
         thisSprite.enabled = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
+        thisSprite.sprite = rotto4;
         thisSprite.enabled = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         thisSprite.sprite = null;
         thisplatform.gameObject.tag = "death";
         yield return new WaitForSeconds(3f);

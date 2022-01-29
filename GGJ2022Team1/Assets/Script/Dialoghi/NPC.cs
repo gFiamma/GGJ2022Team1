@@ -57,9 +57,9 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)                          //se qualcosa esce dal trigger
     {
-        continuoDialogo.enabled = false;
-        if (other.gameObject.CompareTag("Player"))                      //e quel qualcos è il player
+        if (other.gameObject.CompareTag("Player") && !DialogueManager.isTyping)                      //e quel qualcos è il player
         {
+            continuoDialogo.enabled = false;
             canInteract = false;
             if (ControllerCheck.controllerPlugged == true)              //se il controller è collegato
             {

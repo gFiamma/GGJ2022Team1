@@ -35,7 +35,7 @@ public class Checkpoint : MonoBehaviour
                 // We search the activated checkpoint to get its position
                 if (cp.GetComponent<Checkpoint>().Activated)                                                                   //viene cercato il checkpoint attivo
                 {
-                    result = cp.transform.position;                                                                            //viene cambiata la posizione di transform al respawn
+                    result = cp.transform.position + new Vector3 (0, -1, 0);                                                                            //viene cambiata la posizione di transform al respawn
                     break;
                 }
             }
