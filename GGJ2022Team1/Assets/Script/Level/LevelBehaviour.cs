@@ -23,7 +23,7 @@ public class LevelBehaviour : MonoBehaviour
         }
         else
         {
-            player.transform.position = new Vector3(-0.5f, -26.5f, 0);
+            player.transform.position = new Vector3(-0.5f, -101.5f, 0);
             AudioManager.AudioList[1].volume = 0.4f;
             AudioManager.AudioList[1].Play();
             Teleport.isRealWorld = true;
