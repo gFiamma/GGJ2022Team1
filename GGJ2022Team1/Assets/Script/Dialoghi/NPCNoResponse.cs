@@ -50,7 +50,7 @@ public class NPCNoResponse : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)                          //se qualcosa esce dal trigger
     {
-        if (other.gameObject.CompareTag("Player"))                      //e quel qualcos è il player
+        if (other.gameObject.CompareTag("Player") && !DialogueManager.isTyping)                      //e quel qualcos è il player
         {
             canInteract = false;
             if (ControllerCheck.controllerPlugged == true)              //se il controller è collegato

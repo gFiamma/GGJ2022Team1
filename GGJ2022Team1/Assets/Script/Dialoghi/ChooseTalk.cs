@@ -50,7 +50,6 @@ public class ChooseTalk : MonoBehaviour             //video di sfondo: https://w
             }
             StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue));        //faccio partire una coroutine che mostra il dialogo
         }
-
     }
 
     IEnumerator changeScene()
