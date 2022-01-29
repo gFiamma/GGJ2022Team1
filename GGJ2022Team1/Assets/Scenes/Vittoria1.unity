@@ -847,7 +847,7 @@ MonoBehaviour:
   OptionsFirstButton: {fileID: 0}
   OptionsClosedButton: {fileID: 0}
   video: {fileID: 585164690}
-  tempo: 6
+  tempo: 0
   sfondoAnim: {fileID: 1604622626}
   animSfondo: {fileID: 1604622628}
   Musichetta: {fileID: 890774160}
