@@ -7,6 +7,8 @@ public class Checkpoint : MonoBehaviour
     //riferimento al particellare da far partire quando viene preso il checkpoint
     public ParticleSystem particles;
 
+    public bool isAutomatic;
+
     /// Indicate if the checkpoint is activated
     public bool Activated = false;                                                                                         //setto la bool dell'attivazione del checkpoint a falso
     bool canActivate;
@@ -86,35 +88,47 @@ public class Checkpoint : MonoBehaviour
         // If the player passes through the checkpoint, we activate it
         if (other.gameObject.CompareTag("Player") && !this.Activated)                                                                                          //se il player collide con il checkpoint
         {
-            canActivate = true;
-            if (ControllerCheck.controllerPlugged == true)              //se il controller è collegato
+            if (isAutomatic)
             {
-                TextInteractController.SetActive(true);                 //attivo il testo per controller
-                TextInteractPC.SetActive(false);                        //disattivo il testo per pc
+                ActivateCheckPoint();                                                                                           //il checkpoint viene attivato
+                particles.Play();                                                                                                   //fa partire il particellare
+                AudioManager.AudioList[6].Play();
             }
-            else                                                        //sennò
+            else
             {
-                TextInteractController.SetActive(false);                //disattivo il testo per controller
-                TextInteractPC.SetActive(true);                         //attivo il testo per pc
+                canActivate = true;
+                if (ControllerCheck.controllerPlugged == true)              //se il controller è collegato
+                {
+                    TextInteractController.SetActive(true);                 //attivo il testo per controller
+                    TextInteractPC.SetActive(false);                        //disattivo il testo per pc
+                }
+                else                                                        //sennò
+                {
+                    TextInteractController.SetActive(false);                //disattivo il testo per controller
+                    TextInteractPC.SetActive(true);                         //attivo il testo per pc
+                }
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)                          //se qualcosa esce dal trigger
     {
-        canActivate = false;
-        textCheckpoint.SetActive(false);
-        if (other.gameObject.CompareTag("Player"))                      //e quel qualcos è il player
+        if (other.gameObject.CompareTag("Player") && !isAutomatic)
         {
-            if (ControllerCheck.controllerPlugged == true)              //se il controller è collegato
+            canActivate = false;
+            textCheckpoint.SetActive(false);
+            if (other.gameObject.CompareTag("Player"))                      //e quel qualcos è il player
             {
-                TextInteractController.SetActive(false);                //disattivo il testo per controller
-                TextInteractPC.SetActive(false);                        //disattivo il testo per pc
-            }
-            else
-            {
-                TextInteractPC.SetActive(false);                        //disattivo il testo per pc
-                TextInteractController.SetActive(false);                //disattivo il testo per controller
+                if (ControllerCheck.controllerPlugged == true)              //se il controller è collegato
+                {
+                    TextInteractController.SetActive(false);                //disattivo il testo per controller
+                    TextInteractPC.SetActive(false);                        //disattivo il testo per pc
+                }
+                else
+                {
+                    TextInteractPC.SetActive(false);                        //disattivo il testo per pc
+                    TextInteractController.SetActive(false);                //disattivo il testo per controller
+                }
             }
         }
     }
