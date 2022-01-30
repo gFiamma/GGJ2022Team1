@@ -1402,7 +1402,6 @@ MonoBehaviour:
   lettersPerSecondStarter: 35
   TextInteractPC: {fileID: 1717821584}
   TextInteractController: {fileID: 1741639593}
-  HUD: {fileID: 1741639593}
   suonoDialog: {fileID: 233697511}
   NextLineText: {fileID: 192685092}
   NextLineTextController: {fileID: 1709989087}
@@ -2410,6 +2409,7 @@ GameObject:
   - component: {fileID: 2022330440}
   - component: {fileID: 2022330439}
   - component: {fileID: 2022330441}
+  - component: {fileID: 2022330442}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2605,3 +2605,15 @@ MonoBehaviour:
     Face: {fileID: 21300000, guid: 2afc973af22f09d4c9e1d9c3639c219e, type: 3}
   wantAResponse: 0
   altroDialogo: {fileID: 2022330441}
+--- !u!114 &2022330442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022330432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a172b944ade07e45bd59051c659ecfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
