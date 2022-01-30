@@ -49,12 +49,12 @@ public class DialogChangePlayer : MonoBehaviour
         {
             if (Teleport.isRealWorld)
             {
-                DialogueManager.No += 10;
+                DialogueManager.No += 1;
                 Debug.Log(DialogueManager.No);
             }
             else
             {
-                DialogueManager.Yes += 10;
+                DialogueManager.Yes += 1;
                 Debug.Log(DialogueManager.Yes);
             }
 

@@ -1042,7 +1042,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mei ha deciso andare con Bunnie!
+  m_Text: Mei decided to go with Bunnie!
 --- !u!222 &1139222563
 CanvasRenderer:
   m_ObjectHideFlags: 0
