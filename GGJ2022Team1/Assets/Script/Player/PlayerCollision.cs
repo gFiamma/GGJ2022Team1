@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using XInputDotNetPure; //Serve per la vibrazione del controller
 public class PlayerCollision : MonoBehaviour
 {
+    //servono per la vibrazione del controller
+    PlayerIndex playerIndex;
+    GamePadState state;
+    GamePadState prevState;
+
     public static bool RightBlocked, LeftBlocked, UpBlocked, DownBlocked;
     public GameObject right, left, up, down;
     public float distance = 0.3f;
@@ -43,6 +49,7 @@ public class PlayerCollision : MonoBehaviour
         doOnce = true;
         col.enabled = false;
         PlayerController.isDead = true;
+        Vibrate();
         playerAnim.SetTrigger("Dead");
         Inventory.vite--;
         AudioManager.AudioList[7].Play();
@@ -64,5 +71,15 @@ public class PlayerCollision : MonoBehaviour
         animHud.SetTrigger("active");
 
         doOnce = false;
+    }
+    void Vibrate()
+    {
+        GamePad.SetVibration(playerIndex, .3f, .3f);                 //IL CONTROLLER VIBRA
+        StartCoroutine("StopVibrate");
+    }
+    IEnumerator StopVibrate()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GamePad.SetVibration(playerIndex, 0f, 0f);                  //IL CONTROLLER SMETTE DI VIBRARE
     }
 }

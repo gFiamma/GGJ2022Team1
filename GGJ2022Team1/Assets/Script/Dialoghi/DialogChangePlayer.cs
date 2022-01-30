@@ -47,6 +47,17 @@ public class DialogChangePlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (Teleport.isRealWorld)
+            {
+                DialogueManager.No += 10;
+                Debug.Log(DialogueManager.No);
+            }
+            else
+            {
+                DialogueManager.Yes += 10;
+                Debug.Log(DialogueManager.Yes);
+            }
+
             if (SceneName == "Vittoria")
             {
                 if (DialogueManager.Yes > DialogueManager.No)

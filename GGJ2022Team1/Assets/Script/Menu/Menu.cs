@@ -15,6 +15,9 @@ public class Menu : MonoBehaviour
 	public GameObject sfondoAnim;
 	public Animator animSfondo;
 	public AudioSource Musichetta;
+
+	public Text dangoText;
+	public Text dangoText2;
 	void Start()
 	{
 		StartCoroutine(Inizio());
@@ -24,7 +27,8 @@ public class Menu : MonoBehaviour
 	}
 	void Update()
 	{
-
+		dangoText.text = "You collected " + Inventory.collezionabile + "/15 Dangos.";
+		dangoText2.text = "You collected " + Inventory.collezionabile + "/15 Dangos.";
 	}
 
 	public void LoadLevel(string SceneName)
