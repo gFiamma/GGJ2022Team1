@@ -2573,7 +2573,7 @@ MonoBehaviour:
   dialogue2:
     lines:
     - 'Oh... '
-    - Didn't you told me that you would stay with me?
+    - Didn't you tell me that you would stay with me?
     Name: Dango Queen
     Face: {fileID: 21300000, guid: eaf6890dc627d8b4c8466467cbbad462, type: 3}
   wantAResponse: 1
