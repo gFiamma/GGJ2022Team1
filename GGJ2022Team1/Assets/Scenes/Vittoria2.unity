@@ -322,7 +322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 566.70795, y: -496.52997}
+  m_AnchoredPosition: {x: 559.70795, y: -494}
   m_SizeDelta: {x: 786.582, y: 88.742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425439484
@@ -798,7 +798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 572.00006, y: -496.52997}
+  m_AnchoredPosition: {x: 565, y: -494}
   m_SizeDelta: {x: 786.582, y: 88.742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057368552
@@ -1410,8 +1410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.009493291, y: 0.010014}
-  m_SizeDelta: {x: 1920, y: 1080.6}
+  m_AnchoredPosition: {x: -0.009492874, y: 0.010014}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1604622628
 Animator:
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f47e0a8453ca43549a93984995f963ff, type: 3}
+  m_Texture: {fileID: 2800000, guid: 7289fc6cfeb3eee4e87cbfa07befa8e5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1583,8 +1583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.14, y: -0.0002593994}
-  m_SizeDelta: {x: 1922.28, y: 1080.6}
+  m_AnchoredPosition: {x: 0.14, y: -0.010569}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655824486
 MonoBehaviour:
@@ -1662,7 +1662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0.01109314}
+  m_AnchoredPosition: {x: 0.00004374981, y: -0.010566}
   m_SizeDelta: {x: 1920, y: 1272.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1740730167
