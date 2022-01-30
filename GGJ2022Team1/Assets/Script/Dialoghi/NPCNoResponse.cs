@@ -13,7 +13,6 @@ public class NPCNoResponse : MonoBehaviour
     [SerializeField]
     private GameObject TextInteractController = default;                //prendo in reference il testo per controller
 
-    public GameObject interactHUD;                                      //prendo in refernce l'HUD
     bool doOnce = false;
 
     private void Update()
@@ -71,7 +70,6 @@ public class NPCNoResponse : MonoBehaviour
         if (!doOnce)
         {
             doOnce = true;
-            interactHUD.SetActive(false);                                           //disabilito l'hud
             StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue));        //faccio partire una coroutine che mostra il dialogo
         }
 

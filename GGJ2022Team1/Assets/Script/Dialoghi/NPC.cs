@@ -13,7 +13,6 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private GameObject TextInteractController = default;                //prendo in reference il testo per controller
 
-    public GameObject interactHUD;                                      //prendo in refernce l'HUD
     bool doOnce = false;
 
     [SerializeField]
@@ -79,7 +78,6 @@ public class NPC : MonoBehaviour
         if (!doOnce)
         {
             doOnce = true;
-            interactHUD.SetActive(false);                                           //disabilito l'hud
             if (wantAResponse)
             {
                 DialogueManager.isChoosing = true;

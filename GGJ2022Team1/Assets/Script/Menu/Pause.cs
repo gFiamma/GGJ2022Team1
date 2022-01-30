@@ -9,7 +9,6 @@ public class Pause : MonoBehaviour
 	public static bool GameIsPaused = false;											//setto la variabile booleana per capire se si è in pausa o no
 	public GameObject pauseMenuUI, OptionMenuUI;                                        //passo l'intero HUD della pausa
 	public GameObject FirstButton, OptionsFirstButton, OptionsClosedButton;             //prendo in reference dei bottoni presenti nella pausa
-	public GameObject HUDcanvas;                                                        //prendo in reference l'intero pannello che contiene L'HUD
 	public GameObject DialogueBox;                                                        //prendo in reference il Box di Dialogo
 
 	void Start()
@@ -45,7 +44,6 @@ public class Pause : MonoBehaviour
 
 	void Paused()
 	{
-		HUDcanvas.SetActive(false);                                         //disattivo l'hud
 		DialogueBox.SetActive(false);                                         //disattivo il dialogue box
 		pauseMenuUI.SetActive(true);                                        //l'intero pannello della pausa viene attivato
 		Time.timeScale = 0f;                                                //il tempo del gioco viene congelato
@@ -66,7 +64,6 @@ public class Pause : MonoBehaviour
 
 	public void Resume()
 	{
-		HUDcanvas.SetActive(true);                                         //riattivo l'hud
         if (DialogueManager.isTyping)
         {
 			DialogueBox.SetActive(true);                                         //riattivo il dialogue box

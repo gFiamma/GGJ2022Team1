@@ -110,7 +110,7 @@ public class HUDCanvas : MonoBehaviour
 
         float amount2 = (DialogueManager.No);
         amount2 /= 100;
-        noBar.fillAmount = amount;
+        noBar.fillAmount = amount2;
 
         Debug.Log(amount);
         Debug.Log(amount2);

@@ -19,9 +19,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private GameObject TextInteractController = default;                //prendo in reference il testo per controller
 
-    [SerializeField]
-    private GameObject HUD = default;                                   //prendo in reference l'intero pannello dell'hud
-
     public AudioSource suonoDialog = default;                           //prendo in reference un suono che verrà riprodotto quando l'NPC parlerà
 
     bool hoMessoPausa;                                                  //una bool per capire quando si è andati in pausa
@@ -143,7 +140,6 @@ public class DialogueManager : MonoBehaviour
             NextLineTextController.gameObject.SetActive(false);                 //attiva il testo per Controller
         }
         suonoDialog.Play();                                             //faccio partire il suono di quando l'NPC parla
-        HUD.SetActive(false);                                           //disattivo l'HUD
         isTyping = true;                                                //metto la variabile a true così ora tutti gli altri script sanno che sto interagendo con l'NPC
 
         if (ControllerCheck.controllerPlugged == true)                  //se il controller è collegato
@@ -235,7 +231,6 @@ public class DialogueManager : MonoBehaviour
     public void StopDialogue()
     {
         dialogueBox.SetActive(false);                                                           //disabilito il pannello dove si mostra il dialogo
-        HUD.SetActive(true);                                                                    //riattivo l'HUD
         StartCoroutine(waitJump());                                                             //dato che dava problemi che saltava appena finiva il dialogo, ho deciso di fare così per evitare problemi
         ResponseBox.SetActive(false);
         InfoBox.SetActive(false);

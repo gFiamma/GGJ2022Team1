@@ -10,7 +10,6 @@ public class NPC1 : MonoBehaviour
     [SerializeField]
     private Dialogue dialogue2 = default;                                //creo un dialogo tramite il codice
 
-    public GameObject interactHUD;                                      //prendo in refernce l'HUD
     bool doOnce = false;
 
     [SerializeField]
@@ -31,7 +30,6 @@ public class NPC1 : MonoBehaviour
         {
             DialogueManager.chooseResult = 0;
             doOnce = true;
-            interactHUD.SetActive(false);                                           //disabilito l'hud
             if (wantAResponse)
             {
                 DialogueManager.isChoosing = true;
@@ -45,7 +43,6 @@ public class NPC1 : MonoBehaviour
         {
             DialogueManager.chooseResult = 0;
             doOnce = true;
-            interactHUD.SetActive(false);                                           //disabilito l'hud
             if (wantAResponse)
             {
                 DialogueManager.isChoosing = true;
