@@ -11,13 +11,23 @@ public class EnemyCollision : MonoBehaviour
     public LayerMask ObstacleMask;
 
     public bool isMuffin;
-
+    bool doOnce = default;
+    Vector3 startPos;
+    private void Start()
+    {
+        startPos = fullEnemy.transform.position;
+    }
     private void Update()
     {
         RightBlocked = Physics2D.OverlapCircle(right.transform.position, distance, ObstacleMask);
         LeftBlocked = Physics2D.OverlapCircle(left.transform.position, distance, ObstacleMask);
         UpBlocked = Physics2D.OverlapCircle(up.transform.position, distance, ObstacleMask);
         DownBlocked = Physics2D.OverlapCircle(down.transform.position, distance, ObstacleMask);
+
+        if(fullEnemy.activeInHierarchy == false && !doOnce)
+        {
+            StartCoroutine(respawnEnemy());
+        }
     }
 
     private void OnDrawGizmos()
@@ -42,7 +52,17 @@ public class EnemyCollision : MonoBehaviour
                 AudioManager.AudioList[14].Play();
             }
 
-            Destroy(fullEnemy);
+            fullEnemy.SetActive(false);
         }
+    }
+
+    IEnumerator respawnEnemy()
+    {
+        doOnce = true;
+        yield return new WaitForSeconds(10f);
+        fullEnemy.transform.position = startPos;
+        fullEnemy.SetActive(true);
+        doOnce = false;
+
     }
 }

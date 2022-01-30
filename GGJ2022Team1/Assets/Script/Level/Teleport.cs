@@ -10,6 +10,15 @@ public class Teleport : MonoBehaviour
     public static bool isRealWorld;
     bool doOnce;
 
+    [SerializeField]
+    bool left = default;
+    [SerializeField]
+    bool right = default;
+    [SerializeField]
+    bool up = true;
+    [SerializeField]
+    bool down = default;
+
     private void Start()
     {
         doOnce = false;
@@ -55,7 +64,24 @@ public class Teleport : MonoBehaviour
         }
         yield return new WaitForSeconds(0.7f);
         AudioManager.AudioList[12].Play();
-        player.transform.position = teleportTo.transform.position + new Vector3(0, -1, 0);
+
+        if (left && !right && !up && !down)
+        {
+            player.transform.position = teleportTo.transform.position + new Vector3(1, 0, 0);
+        }
+        if (right && !left && !up && !down)
+        {
+            player.transform.position = teleportTo.transform.position + new Vector3(-1, 0, 0);
+        }
+        if (up && !left && !down && !right)
+        {
+            player.transform.position = teleportTo.transform.position + new Vector3(0, -1, 0);
+        }
+        if (down && !left && !right && !up)
+        {
+            player.transform.position = teleportTo.transform.position + new Vector3(0, 1, 0);
+        }
+
         isRealWorld = !isRealWorld;
         yield return new WaitForSeconds(.5f);
         animScreen.SetBool("Transition", false);
