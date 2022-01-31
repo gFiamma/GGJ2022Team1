@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XInputDotNetPure; //Serve per la vibrazione del controller
 
 public class PlayerController : MonoBehaviour
 {
-    //servono per la vibrazione del controller
-    PlayerIndex playerIndex;
-    GamePadState state;
-    GamePadState prevState;
-
     //variabili utili per la morte del player
     public static bool isDead;
 
@@ -173,7 +167,6 @@ public class PlayerController : MonoBehaviour
             {
                 Controls.xPressed = false;
                 isAttacking = true;
-                Vibrate();
                 UpBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkUp", true);
                 AudioManager.AudioList[15].Play();
@@ -183,7 +176,6 @@ public class PlayerController : MonoBehaviour
             {
                 Controls.xPressed = false;
                 isAttacking = true;
-                Vibrate();
                 DownBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkDown", true);
                 AudioManager.AudioList[15].Play();
@@ -193,7 +185,6 @@ public class PlayerController : MonoBehaviour
             {
                 Controls.xPressed = false;
                 isAttacking = true;
-                Vibrate();
                 rightBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkRight", true);
                 AudioManager.AudioList[15].Play();
@@ -203,7 +194,6 @@ public class PlayerController : MonoBehaviour
             {
                 Controls.xPressed = false;
                 isAttacking = true;
-                Vibrate();
                 leftBox.GetComponent<BoxCollider2D>().enabled = true;
                 anim.SetBool("AtkLeft", true);
                 AudioManager.AudioList[15].Play();
@@ -265,17 +255,6 @@ public class PlayerController : MonoBehaviour
         rightBox.GetComponent<BoxCollider2D>().enabled = false;
         UpBox.GetComponent<BoxCollider2D>().enabled = false;
         DownBox.GetComponent<BoxCollider2D>().enabled = false;
-    }
-
-    void Vibrate()
-    {
-        GamePad.SetVibration(playerIndex, .3f, .3f);                 //IL CONTROLLER VIBRA
-        StartCoroutine("StopVibrate");
-    }
-    IEnumerator StopVibrate()
-    {
-        yield return new WaitForSeconds(0.3f);
-        GamePad.SetVibration(playerIndex, 0f, 0f);                  //IL CONTROLLER SMETTE DI VIBRARE
     }
 }
 
