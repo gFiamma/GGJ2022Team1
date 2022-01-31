@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     //variabili per l'attacco
     public GameObject leftBox, rightBox, UpBox, DownBox;
     bool isAttacking;
+
     void Start()
     {
         canMove = true;
@@ -55,38 +56,38 @@ public class PlayerController : MonoBehaviour
         //controllo per togliere i comandi al player quando è morto e quando è in pausa
         if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && canMove)
         {
-            if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked && !isAttacking) //W
+            if (Controls.suPressed > 0 && !isMoving && !PlayerCollision.UpBlocked && !isAttacking) //W
             {
                 direction = 1;
                 StartCoroutine(MovePlayer(Vector3.up));
-            }else if(Input.GetAxis("Vertical") > 0 && !isMoving && !isAttacking)
+            }else if(Controls.suPressed > 0 && !isMoving && !isAttacking)
             {
                 direction = 1;
             }
-            if (Input.GetAxis("Vertical") < 0 && !isMoving && !PlayerCollision.DownBlocked && !isAttacking) //S
+            if (Controls.giuPressed > 0 && !isMoving && !PlayerCollision.DownBlocked && !isAttacking) //S
             {
                 direction = 2;
                 StartCoroutine(MovePlayer(Vector3.down));
             }
-            else if (Input.GetAxis("Vertical") < 0 && !isMoving)
+            else if (Controls.giuPressed > 0 && !isMoving)
             {
                 direction = 2;
             }
-            if (Input.GetAxis("Horizontal") > 0 && !isMoving && !PlayerCollision.RightBlocked && !isAttacking) //D
+            if (Controls.destraPressed > 0 && !isMoving && !PlayerCollision.RightBlocked && !isAttacking) //D
             {
                 direction = 3;
                 StartCoroutine(MovePlayer(Vector3.right));
             }
-            else if (Input.GetAxis("Horizontal") > 0 && !isMoving)
+            else if (Controls.destraPressed > 0 && !isMoving)
             {
                 direction = 3;
             }
-            if (Input.GetAxis("Horizontal") < 0 && !isMoving && !PlayerCollision.LeftBlocked && !isAttacking) //A
+            if (Controls.sinistraPressed > 0 && !isMoving && !PlayerCollision.LeftBlocked && !isAttacking) //A
             {
                 direction = 4;
                 StartCoroutine(MovePlayer(Vector3.left));
             }
-            else if (Input.GetAxis("Horizontal") < 0 && !isMoving && !isAttacking)
+            else if (Controls.sinistraPressed > 0 && !isMoving && !isAttacking)
             {
                 direction = 4;
             }
@@ -168,8 +169,9 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("MoveRight", false);
             }
 
-            if (Input.GetButtonDown("Back") && direction == 1 && !isAttacking)
+            if (Controls.xPressed && direction == 1 && !isAttacking)
             {
+                Controls.xPressed = false;
                 isAttacking = true;
                 Vibrate();
                 UpBox.GetComponent<BoxCollider2D>().enabled = true;
@@ -177,8 +179,9 @@ public class PlayerController : MonoBehaviour
                 AudioManager.AudioList[15].Play();
                 StartCoroutine(atkWait());
             }
-            else if (Input.GetButtonDown("Back") && direction == 2 && !isAttacking)
+            else if (Controls.xPressed && direction == 2 && !isAttacking)
             {
+                Controls.xPressed = false;
                 isAttacking = true;
                 Vibrate();
                 DownBox.GetComponent<BoxCollider2D>().enabled = true;
@@ -186,8 +189,9 @@ public class PlayerController : MonoBehaviour
                 AudioManager.AudioList[15].Play();
                 StartCoroutine(atkWait());
             }
-            else if (Input.GetButtonDown("Back") && direction == 3 && !isAttacking)
+            else if (Controls.xPressed && direction == 3 && !isAttacking)
             {
+                Controls.xPressed = false;
                 isAttacking = true;
                 Vibrate();
                 rightBox.GetComponent<BoxCollider2D>().enabled = true;
@@ -195,8 +199,9 @@ public class PlayerController : MonoBehaviour
                 AudioManager.AudioList[15].Play();
                 StartCoroutine(atkWait());
             }
-            else if (Input.GetButtonDown("Back") && direction == 4 && !isAttacking)
+            else if (Controls.xPressed && direction == 4 && !isAttacking)
             {
+                Controls.xPressed = false;
                 isAttacking = true;
                 Vibrate();
                 leftBox.GetComponent<BoxCollider2D>().enabled = true;
@@ -250,7 +255,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator atkWait()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveLeft", false);
         anim.SetBool("MoveUp", false);

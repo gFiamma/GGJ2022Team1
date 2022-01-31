@@ -42,38 +42,38 @@ public class PlayerController2 : MonoBehaviour
         //controllo per togliere i comandi al player quando è morto e quando è in pausa
         if (!isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && canMove)
         {
-            if (Input.GetAxis("Vertical") > 0 && !isMoving && !PlayerCollision.UpBlocked) //W
+            if (Controls.suPressed > 0 && !isMoving && !PlayerCollision.UpBlocked) //W
             {
                 direction = 1;
                 StartCoroutine(MovePlayer(Vector3.up));
-            }else if(Input.GetAxis("Vertical") > 0 && !isMoving)
+            }else if(Controls.suPressed > 0 && !isMoving)
             {
                 direction = 1;
             }
-            if (Input.GetAxis("Vertical") < 0 && !isMoving && !PlayerCollision.DownBlocked) //S
+            if (Controls.giuPressed > 0 && !isMoving && !PlayerCollision.DownBlocked) //S
             {
                 direction = 2;
                 StartCoroutine(MovePlayer(Vector3.down));
             }
-            else if (Input.GetAxis("Vertical") < 0 && !isMoving)
+            else if (Controls.giuPressed > 0 && !isMoving)
             {
                 direction = 2;
             }
-            if (Input.GetAxis("Horizontal") > 0 && !isMoving && !PlayerCollision.RightBlocked) //D
+            if (Controls.destraPressed > 0 && !isMoving && !PlayerCollision.RightBlocked) //D
             {
                 direction = 3;
                 StartCoroutine(MovePlayer(Vector3.right));
             }
-            else if (Input.GetAxis("Horizontal") > 0 && !isMoving)
+            else if (Controls.destraPressed > 0 && !isMoving)
             {
                 direction = 3;
             }
-            if (Input.GetAxis("Horizontal") < 0 && !isMoving && !PlayerCollision.LeftBlocked) //A
+            if (Controls.sinistraPressed > 0 && !isMoving && !PlayerCollision.LeftBlocked) //A
             {
                 direction = 4;
                 StartCoroutine(MovePlayer(Vector3.left));
             }
-            else if (Input.GetAxis("Horizontal") < 0 && !isMoving)
+            else if (Controls.sinistraPressed > 0 && !isMoving)
             {
                 direction = 4;
             }

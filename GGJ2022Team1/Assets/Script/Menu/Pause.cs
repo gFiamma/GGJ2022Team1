@@ -18,17 +18,15 @@ public class Pause : MonoBehaviour
 	}
 	void Update()
 	{
-		float horizontal = Input.GetAxisRaw("Horizontal");					//assegno ad un float il valore dell'asse orizzontale
-		float vertical = Input.GetAxisRaw("Vertical");                      //assegno ad un float il valore dell'asse verticale
-
 		if (GameIsPaused)                                                   //se il gioco va in pausa
 		{
 			Cursor.lockState = CursorLockMode.Locked;					//blocco il mouse e lo rendo invisibile
 			Cursor.visible = false;
 		}
 
-		if (Input.GetButtonDown("Cancel") && !PlayerController.isDead && Inventory.vite > 0)		//se viene premuto il tasto per la pausa e lo Shop non è attivo
+		if (Controls.cPressed && !PlayerController.isDead && Inventory.vite > 0)		//se viene premuto il tasto per la pausa e lo Shop non è attivo
 		{
+			Controls.cPressed = false;
 			if (GameIsPaused)                                               //ed il gioco è già in pausa
 			{
 				Resume();                                                   //viene richiamata la funzione resume
@@ -48,8 +46,6 @@ public class Pause : MonoBehaviour
 		pauseMenuUI.SetActive(true);                                        //l'intero pannello della pausa viene attivato
 		Time.timeScale = 0f;                                                //il tempo del gioco viene congelato
 		GameIsPaused = true;                                                //la booleana che setta la pausa diventa true
-		EventSystem.current.SetSelectedGameObject(null);					//nell'event system nulla è selezionato
-		EventSystem.current.SetSelectedGameObject(FirstButton);             //il primo bottone è selezionato dall'event system
         if (Teleport.isRealWorld)
         {
 			AudioManager.AudioList[2].Play();
@@ -98,11 +94,9 @@ public class Pause : MonoBehaviour
 	}
 	public void BackOptions()
 	{
-		EventSystem.current.SetSelectedGameObject(OptionsClosedButton);                       //viene selezionato il tasto opzioni quando si torna indietro dal pannello delle opzioni
 	}
 	public void Options()
 	{
-		EventSystem.current.SetSelectedGameObject(OptionsFirstButton);                      //viene selezionato il tasto indietro quando si va nel pannello opzioni
 	}
 
 	IEnumerator waitJump()

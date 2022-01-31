@@ -65,8 +65,9 @@ public class DialogueManager : MonoBehaviour
             suonoDialog.Pause();                                        //il suono viene messo in pausa
         }
 
-        if (isTyping && nextLine && Input.GetButtonDown("Jump"))
+        if (isTyping && nextLine && Controls.zPressed)
         {
+            Controls.zPressed = false;
             ++currentLine;                                                                              //aumento l'indice per poter far dire la prossima riga all'npc
             if (currentLine < dial.Lines.Count)                                                         //se l'indice non supera il numero di righe
             {
@@ -80,9 +81,6 @@ public class DialogueManager : MonoBehaviour
                     suonoDialog.Stop();                                                                     //il suono di quando parla l'NPC si ferma
                     currentLine = 0;                                                                        //resetto l'indice del dialogo
                     ResponseBox.SetActive(true);                                                        //mostro il box per dare la risposta
-                    EventSystem.current.SetSelectedGameObject(yesButton);
-
-
                 }
                 else
                 {
@@ -95,14 +93,11 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Back"))                                        //se viene premuto il tasto "Back" rendo true la booleana, sennò è false
+        if (Controls.xPressed && backPressed)                                        //se viene premuto il tasto "Back" rendo true la booleana, sennò è false
         {
+            Controls.xPressed = false;
             backPressed = true;
-
-        }
-        if (Input.GetButtonUp("Back"))
-        {
-            backPressed = false;
+            StartCoroutine(backPress());
         }
 
     }
@@ -203,6 +198,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    IEnumerator backPress()
+    {
+        yield return new WaitForSeconds(0.1f);
+        backPressed = false;
+    }
     IEnumerator waitJump()
     {
         yield return new WaitForSeconds (0.1f);
@@ -234,6 +234,5 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(waitJump());                                                             //dato che dava problemi che saltava appena finiva il dialogo, ho deciso di fare così per evitare problemi
         ResponseBox.SetActive(false);
         InfoBox.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(null);
     }
 }

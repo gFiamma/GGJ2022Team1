@@ -37,8 +37,9 @@ public class DialogChangePlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && canInteract && DialogueManager.isTyping == false)          //se premi il tasto per interagire, puoi interagire, l'NPC non sta parlando e non hai già interagito
+        if (Controls.zPressed && canInteract && DialogueManager.isTyping == false)          //se premi il tasto per interagire, puoi interagire, l'NPC non sta parlando e non hai già interagito
         {
+            Controls.zPressed = false;
             canInteract = false;
             npcEnd.enabled = true;                                        //richiamo lo script del player
         }

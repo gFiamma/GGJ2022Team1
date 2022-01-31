@@ -30,8 +30,9 @@ public class HUDCanvas : MonoBehaviour
 
         CalcolaValore();
 
-        if (Input.GetButtonDown("Spell") && animHud.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animHud.IsInTransition(0) && !PlayerController.isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && PlayerController.canMove)
+        if (Controls.aPressed && animHud.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animHud.IsInTransition(0) && !PlayerController.isDead && !Pause.GameIsPaused && !DialogueManager.isTyping && PlayerController.canMove)
         {
+            Controls.aPressed = false;
             animHud.SetTrigger("active");
         }
 

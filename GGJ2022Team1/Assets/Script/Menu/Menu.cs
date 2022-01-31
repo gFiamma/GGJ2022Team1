@@ -44,7 +44,6 @@ public class Menu : MonoBehaviour
 	}
 	public void BackOptions()
 	{
-		EventSystem.current.SetSelectedGameObject(OptionsClosedButton);                         //viene selezionato il tasto opzioni quando si torna indietro dal pannello delle opzioni
 		OptionMenuUI.SetActive(false);															//l'intero pannello delle opzioni viene disattivato
 		MenuUI.SetActive(true);																	//l'intero pannello del menu viene attivato
 	}
@@ -52,7 +51,6 @@ public class Menu : MonoBehaviour
 	{
 		OptionMenuUI.SetActive(true);															//l'intero pannello delle opzioni viene attivato
 		MenuUI.SetActive(false);																//l'intero pannello del menu viene disattivato
-		EventSystem.current.SetSelectedGameObject(OptionsFirstButton);							//viene selezionato il tasto indietro quando si va nel pannello opzioni
 	}
 
 	IEnumerator Inizio()
@@ -71,8 +69,6 @@ public class Menu : MonoBehaviour
 		animSfondo.SetBool("active", false);
 		yield return new WaitForSeconds(1f);
 		sfondoAnim.SetActive(false);
-		EventSystem.current.SetSelectedGameObject(null);                    //nell'event system nulla è selezionato
-		EventSystem.current.SetSelectedGameObject(FirstButton);             //il primo bottone è selezionato dall'event system
 		MenuUI.SetActive(true);												//pannello menu attivo
 	}
 }

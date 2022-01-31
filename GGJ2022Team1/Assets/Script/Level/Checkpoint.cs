@@ -72,8 +72,9 @@ public class Checkpoint : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && canActivate)
+        if (Controls.zPressed && canActivate)
         {
+            Controls.zPressed = false;
             canActivate = false;
             TextInteractPC.SetActive(false);                        //disattivo il testo per pc
             TextInteractController.SetActive(false);                //disattivo il testo per controller
